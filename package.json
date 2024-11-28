@@ -4,6 +4,8 @@
   "description": "DK simple ATM",
   "main": "./bin/run.js",
   "scripts": {
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "abrahamSN",
@@ -19,7 +21,10 @@
     "topicSeparator": " "
   },
   "dependencies": {
-    "@oclif/core": "^4.0.33"
+    "@oclif/core": "^4.0.33",
+    "@prisma/client": "^5.22.0",
+    "prisma": "^5.22.0",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
     "@types/node": "18",

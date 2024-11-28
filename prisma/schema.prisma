@@ -1,0 +1,31 @@
+datasource db {
+    provider = "sqlite"
+    url      = "file:./dk-atm.db"
+}
+
+generator client {
+    provider = "prisma-client-js"
+    output   = "./generated/client"
+}
+
+model User {
+    id      Int           @id @default(autoincrement())
+    uname   String        @unique
+    trx     Transaction[]
+    isLogin isLogin[]
+}
+
+model Transaction {
+    id        Int      @id @default(autoincrement())
+    amount    Float
+    type      String
+    userId    Int
+    user      User     @relation(fields: [userId], references: [id])
+    createdAt DateTime @default(now())
+}
+
+model isLogin {
+    id     Int  @id @default(autoincrement())
+    userId Int
+    user   User @relation(fields: [userId], references: [id])
+}
