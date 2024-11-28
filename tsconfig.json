@@ -1,0 +1,14 @@
+{
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules" // Exclude node_modules folder
+  ],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "module": "nodenext",
+    "noEmit": false,
+    "declaration": true,
+    "strict": true,
+    "allowImportingTsExtensions": false
+  }
+}
