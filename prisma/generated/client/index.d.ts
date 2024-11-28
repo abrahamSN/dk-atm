@@ -24,10 +24,10 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Transaction = $Result.DefaultSelection<Prisma.$TransactionPayload>
 /**
- * Model isLogin
+ * Model Session
  * 
  */
-export type isLogin = $Result.DefaultSelection<Prisma.$isLoginPayload>
+export type Session = $Result.DefaultSelection<Prisma.$SessionPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -173,14 +173,14 @@ export class PrismaClient<
   get transaction(): Prisma.TransactionDelegate<ExtArgs>;
 
   /**
-   * `prisma.isLogin`: Exposes CRUD operations for the **isLogin** model.
+   * `prisma.session`: Exposes CRUD operations for the **Session** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more IsLogins
-    * const isLogins = await prisma.isLogin.findMany()
+    * // Fetch zero or more Sessions
+    * const sessions = await prisma.session.findMany()
     * ```
     */
-  get isLogin(): Prisma.isLoginDelegate<ExtArgs>;
+  get session(): Prisma.SessionDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -624,7 +624,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Transaction: 'Transaction',
-    isLogin: 'isLogin'
+    Session: 'Session'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -640,7 +640,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "transaction" | "isLogin"
+      modelProps: "user" | "transaction" | "session"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -784,73 +784,73 @@ export namespace Prisma {
           }
         }
       }
-      isLogin: {
-        payload: Prisma.$isLoginPayload<ExtArgs>
-        fields: Prisma.isLoginFieldRefs
+      Session: {
+        payload: Prisma.$SessionPayload<ExtArgs>
+        fields: Prisma.SessionFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.isLoginFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$isLoginPayload> | null
+            args: Prisma.SessionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.isLoginFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$isLoginPayload>
+            args: Prisma.SessionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
           }
           findFirst: {
-            args: Prisma.isLoginFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$isLoginPayload> | null
+            args: Prisma.SessionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.isLoginFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$isLoginPayload>
+            args: Prisma.SessionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
           }
           findMany: {
-            args: Prisma.isLoginFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$isLoginPayload>[]
+            args: Prisma.SessionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload>[]
           }
           create: {
-            args: Prisma.isLoginCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$isLoginPayload>
+            args: Prisma.SessionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
           }
           createMany: {
-            args: Prisma.isLoginCreateManyArgs<ExtArgs>
+            args: Prisma.SessionCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.isLoginCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$isLoginPayload>[]
+            args: Prisma.SessionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload>[]
           }
           delete: {
-            args: Prisma.isLoginDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$isLoginPayload>
+            args: Prisma.SessionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
           }
           update: {
-            args: Prisma.isLoginUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$isLoginPayload>
+            args: Prisma.SessionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
           }
           deleteMany: {
-            args: Prisma.isLoginDeleteManyArgs<ExtArgs>
+            args: Prisma.SessionDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.isLoginUpdateManyArgs<ExtArgs>
+            args: Prisma.SessionUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.isLoginUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$isLoginPayload>
+            args: Prisma.SessionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload>
           }
           aggregate: {
-            args: Prisma.IsLoginAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateIsLogin>
+            args: Prisma.SessionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSession>
           }
           groupBy: {
-            args: Prisma.isLoginGroupByArgs<ExtArgs>
-            result: $Utils.Optional<IsLoginGroupByOutputType>[]
+            args: Prisma.SessionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SessionGroupByOutputType>[]
           }
           count: {
-            args: Prisma.isLoginCountArgs<ExtArgs>
-            result: $Utils.Optional<IsLoginCountAggregateOutputType> | number
+            args: Prisma.SessionCountArgs<ExtArgs>
+            result: $Utils.Optional<SessionCountAggregateOutputType> | number
           }
         }
       }
@@ -1015,13 +1015,15 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    trx: number
-    isLogin: number
+    sessions: number
+    trxUser: number
+    trxToUser: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    trx?: boolean | UserCountOutputTypeCountTrxArgs
-    isLogin?: boolean | UserCountOutputTypeCountIsLoginArgs
+    sessions?: boolean | UserCountOutputTypeCountSessionsArgs
+    trxUser?: boolean | UserCountOutputTypeCountTrxUserArgs
+    trxToUser?: boolean | UserCountOutputTypeCountTrxToUserArgs
   }
 
   // Custom InputTypes
@@ -1038,15 +1040,22 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountTrxArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SessionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTrxUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TransactionWhereInput
   }
 
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountIsLoginArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: isLoginWhereInput
+  export type UserCountOutputTypeCountTrxToUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransactionWhereInput
   }
 
 
@@ -1077,16 +1086,19 @@ export namespace Prisma {
   export type UserMinAggregateOutputType = {
     id: number | null
     uname: string | null
+    createdAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
     uname: string | null
+    createdAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     uname: number
+    createdAt: number
     _all: number
   }
 
@@ -1102,16 +1114,19 @@ export namespace Prisma {
   export type UserMinAggregateInputType = {
     id?: true
     uname?: true
+    createdAt?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     uname?: true
+    createdAt?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     uname?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -1204,6 +1219,7 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: number
     uname: string
+    createdAt: Date
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1228,24 +1244,29 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     uname?: boolean
-    trx?: boolean | User$trxArgs<ExtArgs>
-    isLogin?: boolean | User$isLoginArgs<ExtArgs>
+    createdAt?: boolean
+    sessions?: boolean | User$sessionsArgs<ExtArgs>
+    trxUser?: boolean | User$trxUserArgs<ExtArgs>
+    trxToUser?: boolean | User$trxToUserArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     uname?: boolean
+    createdAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     uname?: boolean
+    createdAt?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    trx?: boolean | User$trxArgs<ExtArgs>
-    isLogin?: boolean | User$isLoginArgs<ExtArgs>
+    sessions?: boolean | User$sessionsArgs<ExtArgs>
+    trxUser?: boolean | User$trxUserArgs<ExtArgs>
+    trxToUser?: boolean | User$trxToUserArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1253,12 +1274,14 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      trx: Prisma.$TransactionPayload<ExtArgs>[]
-      isLogin: Prisma.$isLoginPayload<ExtArgs>[]
+      sessions: Prisma.$SessionPayload<ExtArgs>[]
+      trxUser: Prisma.$TransactionPayload<ExtArgs>[]
+      trxToUser: Prisma.$TransactionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       uname: string
+      createdAt: Date
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1623,8 +1646,9 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    trx<T extends User$trxArgs<ExtArgs> = {}>(args?: Subset<T, User$trxArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany"> | Null>
-    isLogin<T extends User$isLoginArgs<ExtArgs> = {}>(args?: Subset<T, User$isLoginArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "findMany"> | Null>
+    sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany"> | Null>
+    trxUser<T extends User$trxUserArgs<ExtArgs> = {}>(args?: Subset<T, User$trxUserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany"> | Null>
+    trxToUser<T extends User$trxToUserArgs<ExtArgs> = {}>(args?: Subset<T, User$trxToUserArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1656,6 +1680,7 @@ export namespace Prisma {
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'Int'>
     readonly uname: FieldRef<"User", 'String'>
+    readonly createdAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -1968,9 +1993,29 @@ export namespace Prisma {
   }
 
   /**
-   * User.trx
+   * User.sessions
    */
-  export type User$trxArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Session
+     */
+    select?: SessionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SessionInclude<ExtArgs> | null
+    where?: SessionWhereInput
+    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    cursor?: SessionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
+  }
+
+  /**
+   * User.trxUser
+   */
+  export type User$trxUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Transaction
      */
@@ -1988,23 +2033,23 @@ export namespace Prisma {
   }
 
   /**
-   * User.isLogin
+   * User.trxToUser
    */
-  export type User$isLoginArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$trxToUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Transaction
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: TransactionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
-    where?: isLoginWhereInput
-    orderBy?: isLoginOrderByWithRelationInput | isLoginOrderByWithRelationInput[]
-    cursor?: isLoginWhereUniqueInput
+    include?: TransactionInclude<ExtArgs> | null
+    where?: TransactionWhereInput
+    orderBy?: TransactionOrderByWithRelationInput | TransactionOrderByWithRelationInput[]
+    cursor?: TransactionWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: IsLoginScalarFieldEnum | IsLoginScalarFieldEnum[]
+    distinct?: TransactionScalarFieldEnum | TransactionScalarFieldEnum[]
   }
 
   /**
@@ -2038,12 +2083,14 @@ export namespace Prisma {
     id: number | null
     amount: number | null
     userId: number | null
+    toUserId: number | null
   }
 
   export type TransactionSumAggregateOutputType = {
     id: number | null
     amount: number | null
     userId: number | null
+    toUserId: number | null
   }
 
   export type TransactionMinAggregateOutputType = {
@@ -2051,6 +2098,7 @@ export namespace Prisma {
     amount: number | null
     type: string | null
     userId: number | null
+    toUserId: number | null
     createdAt: Date | null
   }
 
@@ -2059,6 +2107,7 @@ export namespace Prisma {
     amount: number | null
     type: string | null
     userId: number | null
+    toUserId: number | null
     createdAt: Date | null
   }
 
@@ -2067,6 +2116,7 @@ export namespace Prisma {
     amount: number
     type: number
     userId: number
+    toUserId: number
     createdAt: number
     _all: number
   }
@@ -2076,12 +2126,14 @@ export namespace Prisma {
     id?: true
     amount?: true
     userId?: true
+    toUserId?: true
   }
 
   export type TransactionSumAggregateInputType = {
     id?: true
     amount?: true
     userId?: true
+    toUserId?: true
   }
 
   export type TransactionMinAggregateInputType = {
@@ -2089,6 +2141,7 @@ export namespace Prisma {
     amount?: true
     type?: true
     userId?: true
+    toUserId?: true
     createdAt?: true
   }
 
@@ -2097,6 +2150,7 @@ export namespace Prisma {
     amount?: true
     type?: true
     userId?: true
+    toUserId?: true
     createdAt?: true
   }
 
@@ -2105,6 +2159,7 @@ export namespace Prisma {
     amount?: true
     type?: true
     userId?: true
+    toUserId?: true
     createdAt?: true
     _all?: true
   }
@@ -2200,6 +2255,7 @@ export namespace Prisma {
     amount: number
     type: string
     userId: number
+    toUserId: number | null
     createdAt: Date
     _count: TransactionCountAggregateOutputType | null
     _avg: TransactionAvgAggregateOutputType | null
@@ -2227,8 +2283,10 @@ export namespace Prisma {
     amount?: boolean
     type?: boolean
     userId?: boolean
+    toUserId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    toUser?: boolean | Transaction$toUserArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
   export type TransactionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2236,8 +2294,10 @@ export namespace Prisma {
     amount?: boolean
     type?: boolean
     userId?: boolean
+    toUserId?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
+    toUser?: boolean | Transaction$toUserArgs<ExtArgs>
   }, ExtArgs["result"]["transaction"]>
 
   export type TransactionSelectScalar = {
@@ -2245,26 +2305,31 @@ export namespace Prisma {
     amount?: boolean
     type?: boolean
     userId?: boolean
+    toUserId?: boolean
     createdAt?: boolean
   }
 
   export type TransactionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    toUser?: boolean | Transaction$toUserArgs<ExtArgs>
   }
   export type TransactionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
+    toUser?: boolean | Transaction$toUserArgs<ExtArgs>
   }
 
   export type $TransactionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Transaction"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
+      toUser: Prisma.$UserPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       amount: number
       type: string
       userId: number
+      toUserId: number | null
       createdAt: Date
     }, ExtArgs["result"]["transaction"]>
     composites: {}
@@ -2631,6 +2696,7 @@ export namespace Prisma {
   export interface Prisma__TransactionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    toUser<T extends Transaction$toUserArgs<ExtArgs> = {}>(args?: Subset<T, Transaction$toUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2664,6 +2730,7 @@ export namespace Prisma {
     readonly amount: FieldRef<"Transaction", 'Float'>
     readonly type: FieldRef<"Transaction", 'String'>
     readonly userId: FieldRef<"Transaction", 'Int'>
+    readonly toUserId: FieldRef<"Transaction", 'Int'>
     readonly createdAt: FieldRef<"Transaction", 'DateTime'>
   }
     
@@ -2981,6 +3048,21 @@ export namespace Prisma {
   }
 
   /**
+   * Transaction.toUser
+   */
+  export type Transaction$toUserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
    * Transaction without action
    */
   export type TransactionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2996,342 +3078,353 @@ export namespace Prisma {
 
 
   /**
-   * Model isLogin
+   * Model Session
    */
 
-  export type AggregateIsLogin = {
-    _count: IsLoginCountAggregateOutputType | null
-    _avg: IsLoginAvgAggregateOutputType | null
-    _sum: IsLoginSumAggregateOutputType | null
-    _min: IsLoginMinAggregateOutputType | null
-    _max: IsLoginMaxAggregateOutputType | null
+  export type AggregateSession = {
+    _count: SessionCountAggregateOutputType | null
+    _avg: SessionAvgAggregateOutputType | null
+    _sum: SessionSumAggregateOutputType | null
+    _min: SessionMinAggregateOutputType | null
+    _max: SessionMaxAggregateOutputType | null
   }
 
-  export type IsLoginAvgAggregateOutputType = {
+  export type SessionAvgAggregateOutputType = {
     id: number | null
     userId: number | null
   }
 
-  export type IsLoginSumAggregateOutputType = {
+  export type SessionSumAggregateOutputType = {
     id: number | null
     userId: number | null
   }
 
-  export type IsLoginMinAggregateOutputType = {
+  export type SessionMinAggregateOutputType = {
     id: number | null
     userId: number | null
+    createdAt: Date | null
   }
 
-  export type IsLoginMaxAggregateOutputType = {
+  export type SessionMaxAggregateOutputType = {
     id: number | null
     userId: number | null
+    createdAt: Date | null
   }
 
-  export type IsLoginCountAggregateOutputType = {
+  export type SessionCountAggregateOutputType = {
     id: number
     userId: number
+    createdAt: number
     _all: number
   }
 
 
-  export type IsLoginAvgAggregateInputType = {
+  export type SessionAvgAggregateInputType = {
     id?: true
     userId?: true
   }
 
-  export type IsLoginSumAggregateInputType = {
+  export type SessionSumAggregateInputType = {
     id?: true
     userId?: true
   }
 
-  export type IsLoginMinAggregateInputType = {
+  export type SessionMinAggregateInputType = {
     id?: true
     userId?: true
+    createdAt?: true
   }
 
-  export type IsLoginMaxAggregateInputType = {
+  export type SessionMaxAggregateInputType = {
     id?: true
     userId?: true
+    createdAt?: true
   }
 
-  export type IsLoginCountAggregateInputType = {
+  export type SessionCountAggregateInputType = {
     id?: true
     userId?: true
+    createdAt?: true
     _all?: true
   }
 
-  export type IsLoginAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which isLogin to aggregate.
+     * Filter which Session to aggregate.
      */
-    where?: isLoginWhereInput
+    where?: SessionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of isLogins to fetch.
+     * Determine the order of Sessions to fetch.
      */
-    orderBy?: isLoginOrderByWithRelationInput | isLoginOrderByWithRelationInput[]
+    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: isLoginWhereUniqueInput
+    cursor?: SessionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` isLogins from the position of the cursor.
+     * Take `±n` Sessions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` isLogins.
+     * Skip the first `n` Sessions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned isLogins
+     * Count returned Sessions
     **/
-    _count?: true | IsLoginCountAggregateInputType
+    _count?: true | SessionCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: IsLoginAvgAggregateInputType
+    _avg?: SessionAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: IsLoginSumAggregateInputType
+    _sum?: SessionSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: IsLoginMinAggregateInputType
+    _min?: SessionMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: IsLoginMaxAggregateInputType
+    _max?: SessionMaxAggregateInputType
   }
 
-  export type GetIsLoginAggregateType<T extends IsLoginAggregateArgs> = {
-        [P in keyof T & keyof AggregateIsLogin]: P extends '_count' | 'count'
+  export type GetSessionAggregateType<T extends SessionAggregateArgs> = {
+        [P in keyof T & keyof AggregateSession]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateIsLogin[P]>
-      : GetScalarType<T[P], AggregateIsLogin[P]>
+        : GetScalarType<T[P], AggregateSession[P]>
+      : GetScalarType<T[P], AggregateSession[P]>
   }
 
 
 
 
-  export type isLoginGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: isLoginWhereInput
-    orderBy?: isLoginOrderByWithAggregationInput | isLoginOrderByWithAggregationInput[]
-    by: IsLoginScalarFieldEnum[] | IsLoginScalarFieldEnum
-    having?: isLoginScalarWhereWithAggregatesInput
+  export type SessionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SessionWhereInput
+    orderBy?: SessionOrderByWithAggregationInput | SessionOrderByWithAggregationInput[]
+    by: SessionScalarFieldEnum[] | SessionScalarFieldEnum
+    having?: SessionScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: IsLoginCountAggregateInputType | true
-    _avg?: IsLoginAvgAggregateInputType
-    _sum?: IsLoginSumAggregateInputType
-    _min?: IsLoginMinAggregateInputType
-    _max?: IsLoginMaxAggregateInputType
+    _count?: SessionCountAggregateInputType | true
+    _avg?: SessionAvgAggregateInputType
+    _sum?: SessionSumAggregateInputType
+    _min?: SessionMinAggregateInputType
+    _max?: SessionMaxAggregateInputType
   }
 
-  export type IsLoginGroupByOutputType = {
+  export type SessionGroupByOutputType = {
     id: number
     userId: number
-    _count: IsLoginCountAggregateOutputType | null
-    _avg: IsLoginAvgAggregateOutputType | null
-    _sum: IsLoginSumAggregateOutputType | null
-    _min: IsLoginMinAggregateOutputType | null
-    _max: IsLoginMaxAggregateOutputType | null
+    createdAt: Date
+    _count: SessionCountAggregateOutputType | null
+    _avg: SessionAvgAggregateOutputType | null
+    _sum: SessionSumAggregateOutputType | null
+    _min: SessionMinAggregateOutputType | null
+    _max: SessionMaxAggregateOutputType | null
   }
 
-  type GetIsLoginGroupByPayload<T extends isLoginGroupByArgs> = Prisma.PrismaPromise<
+  type GetSessionGroupByPayload<T extends SessionGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<IsLoginGroupByOutputType, T['by']> &
+      PickEnumerable<SessionGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof IsLoginGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof SessionGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], IsLoginGroupByOutputType[P]>
-            : GetScalarType<T[P], IsLoginGroupByOutputType[P]>
+              : GetScalarType<T[P], SessionGroupByOutputType[P]>
+            : GetScalarType<T[P], SessionGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type isLoginSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type SessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["isLogin"]>
+  }, ExtArgs["result"]["session"]>
 
-  export type isLoginSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type SessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["isLogin"]>
+  }, ExtArgs["result"]["session"]>
 
-  export type isLoginSelectScalar = {
+  export type SessionSelectScalar = {
     id?: boolean
     userId?: boolean
+    createdAt?: boolean
   }
 
-  export type isLoginInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type isLoginIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
-  export type $isLoginPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "isLogin"
+  export type $SessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Session"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userId: number
-    }, ExtArgs["result"]["isLogin"]>
+      createdAt: Date
+    }, ExtArgs["result"]["session"]>
     composites: {}
   }
 
-  type isLoginGetPayload<S extends boolean | null | undefined | isLoginDefaultArgs> = $Result.GetResult<Prisma.$isLoginPayload, S>
+  type SessionGetPayload<S extends boolean | null | undefined | SessionDefaultArgs> = $Result.GetResult<Prisma.$SessionPayload, S>
 
-  type isLoginCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<isLoginFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: IsLoginCountAggregateInputType | true
+  type SessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SessionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SessionCountAggregateInputType | true
     }
 
-  export interface isLoginDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['isLogin'], meta: { name: 'isLogin' } }
+  export interface SessionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Session'], meta: { name: 'Session' } }
     /**
-     * Find zero or one IsLogin that matches the filter.
-     * @param {isLoginFindUniqueArgs} args - Arguments to find a IsLogin
+     * Find zero or one Session that matches the filter.
+     * @param {SessionFindUniqueArgs} args - Arguments to find a Session
      * @example
-     * // Get one IsLogin
-     * const isLogin = await prisma.isLogin.findUnique({
+     * // Get one Session
+     * const session = await prisma.session.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends isLoginFindUniqueArgs>(args: SelectSubset<T, isLoginFindUniqueArgs<ExtArgs>>): Prisma__isLoginClient<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+    findUnique<T extends SessionFindUniqueArgs>(args: SelectSubset<T, SessionFindUniqueArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
 
     /**
-     * Find one IsLogin that matches the filter or throw an error with `error.code='P2025'` 
+     * Find one Session that matches the filter or throw an error with `error.code='P2025'` 
      * if no matches were found.
-     * @param {isLoginFindUniqueOrThrowArgs} args - Arguments to find a IsLogin
+     * @param {SessionFindUniqueOrThrowArgs} args - Arguments to find a Session
      * @example
-     * // Get one IsLogin
-     * const isLogin = await prisma.isLogin.findUniqueOrThrow({
+     * // Get one Session
+     * const session = await prisma.session.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends isLoginFindUniqueOrThrowArgs>(args: SelectSubset<T, isLoginFindUniqueOrThrowArgs<ExtArgs>>): Prisma__isLoginClient<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+    findUniqueOrThrow<T extends SessionFindUniqueOrThrowArgs>(args: SelectSubset<T, SessionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
 
     /**
-     * Find the first IsLogin that matches the filter.
+     * Find the first Session that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {isLoginFindFirstArgs} args - Arguments to find a IsLogin
+     * @param {SessionFindFirstArgs} args - Arguments to find a Session
      * @example
-     * // Get one IsLogin
-     * const isLogin = await prisma.isLogin.findFirst({
+     * // Get one Session
+     * const session = await prisma.session.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends isLoginFindFirstArgs>(args?: SelectSubset<T, isLoginFindFirstArgs<ExtArgs>>): Prisma__isLoginClient<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+    findFirst<T extends SessionFindFirstArgs>(args?: SelectSubset<T, SessionFindFirstArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
 
     /**
-     * Find the first IsLogin that matches the filter or
+     * Find the first Session that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {isLoginFindFirstOrThrowArgs} args - Arguments to find a IsLogin
+     * @param {SessionFindFirstOrThrowArgs} args - Arguments to find a Session
      * @example
-     * // Get one IsLogin
-     * const isLogin = await prisma.isLogin.findFirstOrThrow({
+     * // Get one Session
+     * const session = await prisma.session.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends isLoginFindFirstOrThrowArgs>(args?: SelectSubset<T, isLoginFindFirstOrThrowArgs<ExtArgs>>): Prisma__isLoginClient<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+    findFirstOrThrow<T extends SessionFindFirstOrThrowArgs>(args?: SelectSubset<T, SessionFindFirstOrThrowArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
 
     /**
-     * Find zero or more IsLogins that matches the filter.
+     * Find zero or more Sessions that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {isLoginFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {SessionFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all IsLogins
-     * const isLogins = await prisma.isLogin.findMany()
+     * // Get all Sessions
+     * const sessions = await prisma.session.findMany()
      * 
-     * // Get first 10 IsLogins
-     * const isLogins = await prisma.isLogin.findMany({ take: 10 })
+     * // Get first 10 Sessions
+     * const sessions = await prisma.session.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const isLoginWithIdOnly = await prisma.isLogin.findMany({ select: { id: true } })
+     * const sessionWithIdOnly = await prisma.session.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends isLoginFindManyArgs>(args?: SelectSubset<T, isLoginFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "findMany">>
+    findMany<T extends SessionFindManyArgs>(args?: SelectSubset<T, SessionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany">>
 
     /**
-     * Create a IsLogin.
-     * @param {isLoginCreateArgs} args - Arguments to create a IsLogin.
+     * Create a Session.
+     * @param {SessionCreateArgs} args - Arguments to create a Session.
      * @example
-     * // Create one IsLogin
-     * const IsLogin = await prisma.isLogin.create({
+     * // Create one Session
+     * const Session = await prisma.session.create({
      *   data: {
-     *     // ... data to create a IsLogin
+     *     // ... data to create a Session
      *   }
      * })
      * 
      */
-    create<T extends isLoginCreateArgs>(args: SelectSubset<T, isLoginCreateArgs<ExtArgs>>): Prisma__isLoginClient<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "create">, never, ExtArgs>
+    create<T extends SessionCreateArgs>(args: SelectSubset<T, SessionCreateArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "create">, never, ExtArgs>
 
     /**
-     * Create many IsLogins.
-     * @param {isLoginCreateManyArgs} args - Arguments to create many IsLogins.
+     * Create many Sessions.
+     * @param {SessionCreateManyArgs} args - Arguments to create many Sessions.
      * @example
-     * // Create many IsLogins
-     * const isLogin = await prisma.isLogin.createMany({
+     * // Create many Sessions
+     * const session = await prisma.session.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends isLoginCreateManyArgs>(args?: SelectSubset<T, isLoginCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends SessionCreateManyArgs>(args?: SelectSubset<T, SessionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many IsLogins and returns the data saved in the database.
-     * @param {isLoginCreateManyAndReturnArgs} args - Arguments to create many IsLogins.
+     * Create many Sessions and returns the data saved in the database.
+     * @param {SessionCreateManyAndReturnArgs} args - Arguments to create many Sessions.
      * @example
-     * // Create many IsLogins
-     * const isLogin = await prisma.isLogin.createManyAndReturn({
+     * // Create many Sessions
+     * const session = await prisma.session.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many IsLogins and only return the `id`
-     * const isLoginWithIdOnly = await prisma.isLogin.createManyAndReturn({ 
+     * // Create many Sessions and only return the `id`
+     * const sessionWithIdOnly = await prisma.session.createManyAndReturn({ 
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3341,28 +3434,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends isLoginCreateManyAndReturnArgs>(args?: SelectSubset<T, isLoginCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "createManyAndReturn">>
+    createManyAndReturn<T extends SessionCreateManyAndReturnArgs>(args?: SelectSubset<T, SessionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "createManyAndReturn">>
 
     /**
-     * Delete a IsLogin.
-     * @param {isLoginDeleteArgs} args - Arguments to delete one IsLogin.
+     * Delete a Session.
+     * @param {SessionDeleteArgs} args - Arguments to delete one Session.
      * @example
-     * // Delete one IsLogin
-     * const IsLogin = await prisma.isLogin.delete({
+     * // Delete one Session
+     * const Session = await prisma.session.delete({
      *   where: {
-     *     // ... filter to delete one IsLogin
+     *     // ... filter to delete one Session
      *   }
      * })
      * 
      */
-    delete<T extends isLoginDeleteArgs>(args: SelectSubset<T, isLoginDeleteArgs<ExtArgs>>): Prisma__isLoginClient<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+    delete<T extends SessionDeleteArgs>(args: SelectSubset<T, SessionDeleteArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "delete">, never, ExtArgs>
 
     /**
-     * Update one IsLogin.
-     * @param {isLoginUpdateArgs} args - Arguments to update one IsLogin.
+     * Update one Session.
+     * @param {SessionUpdateArgs} args - Arguments to update one Session.
      * @example
-     * // Update one IsLogin
-     * const isLogin = await prisma.isLogin.update({
+     * // Update one Session
+     * const session = await prisma.session.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3372,30 +3465,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends isLoginUpdateArgs>(args: SelectSubset<T, isLoginUpdateArgs<ExtArgs>>): Prisma__isLoginClient<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "update">, never, ExtArgs>
+    update<T extends SessionUpdateArgs>(args: SelectSubset<T, SessionUpdateArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "update">, never, ExtArgs>
 
     /**
-     * Delete zero or more IsLogins.
-     * @param {isLoginDeleteManyArgs} args - Arguments to filter IsLogins to delete.
+     * Delete zero or more Sessions.
+     * @param {SessionDeleteManyArgs} args - Arguments to filter Sessions to delete.
      * @example
-     * // Delete a few IsLogins
-     * const { count } = await prisma.isLogin.deleteMany({
+     * // Delete a few Sessions
+     * const { count } = await prisma.session.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends isLoginDeleteManyArgs>(args?: SelectSubset<T, isLoginDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends SessionDeleteManyArgs>(args?: SelectSubset<T, SessionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more IsLogins.
+     * Update zero or more Sessions.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {isLoginUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {SessionUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many IsLogins
-     * const isLogin = await prisma.isLogin.updateMany({
+     * // Update many Sessions
+     * const session = await prisma.session.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3405,56 +3498,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends isLoginUpdateManyArgs>(args: SelectSubset<T, isLoginUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends SessionUpdateManyArgs>(args: SelectSubset<T, SessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one IsLogin.
-     * @param {isLoginUpsertArgs} args - Arguments to update or create a IsLogin.
+     * Create or update one Session.
+     * @param {SessionUpsertArgs} args - Arguments to update or create a Session.
      * @example
-     * // Update or create a IsLogin
-     * const isLogin = await prisma.isLogin.upsert({
+     * // Update or create a Session
+     * const session = await prisma.session.upsert({
      *   create: {
-     *     // ... data to create a IsLogin
+     *     // ... data to create a Session
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the IsLogin we want to update
+     *     // ... the filter for the Session we want to update
      *   }
      * })
      */
-    upsert<T extends isLoginUpsertArgs>(args: SelectSubset<T, isLoginUpsertArgs<ExtArgs>>): Prisma__isLoginClient<$Result.GetResult<Prisma.$isLoginPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+    upsert<T extends SessionUpsertArgs>(args: SelectSubset<T, SessionUpsertArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
 
 
     /**
-     * Count the number of IsLogins.
+     * Count the number of Sessions.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {isLoginCountArgs} args - Arguments to filter IsLogins to count.
+     * @param {SessionCountArgs} args - Arguments to filter Sessions to count.
      * @example
-     * // Count the number of IsLogins
-     * const count = await prisma.isLogin.count({
+     * // Count the number of Sessions
+     * const count = await prisma.session.count({
      *   where: {
-     *     // ... the filter for the IsLogins we want to count
+     *     // ... the filter for the Sessions we want to count
      *   }
      * })
     **/
-    count<T extends isLoginCountArgs>(
-      args?: Subset<T, isLoginCountArgs>,
+    count<T extends SessionCountArgs>(
+      args?: Subset<T, SessionCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], IsLoginCountAggregateOutputType>
+          : GetScalarType<T['select'], SessionCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a IsLogin.
+     * Allows you to perform aggregations operations on a Session.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {IsLoginAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {SessionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3474,13 +3567,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends IsLoginAggregateArgs>(args: Subset<T, IsLoginAggregateArgs>): Prisma.PrismaPromise<GetIsLoginAggregateType<T>>
+    aggregate<T extends SessionAggregateArgs>(args: Subset<T, SessionAggregateArgs>): Prisma.PrismaPromise<GetSessionAggregateType<T>>
 
     /**
-     * Group by IsLogin.
+     * Group by Session.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {isLoginGroupByArgs} args - Group by arguments.
+     * @param {SessionGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3495,14 +3588,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends isLoginGroupByArgs,
+      T extends SessionGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: isLoginGroupByArgs['orderBy'] }
-        : { orderBy?: isLoginGroupByArgs['orderBy'] },
+        ? { orderBy: SessionGroupByArgs['orderBy'] }
+        : { orderBy?: SessionGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3551,20 +3644,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, isLoginGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetIsLoginGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, SessionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSessionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the isLogin model
+   * Fields of the Session model
    */
-  readonly fields: isLoginFieldRefs;
+  readonly fields: SessionFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for isLogin.
+   * The delegate class that acts as a "Promise-like" for Session.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__isLoginClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__SessionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
@@ -3593,338 +3686,339 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the isLogin model
+   * Fields of the Session model
    */ 
-  interface isLoginFieldRefs {
-    readonly id: FieldRef<"isLogin", 'Int'>
-    readonly userId: FieldRef<"isLogin", 'Int'>
+  interface SessionFieldRefs {
+    readonly id: FieldRef<"Session", 'Int'>
+    readonly userId: FieldRef<"Session", 'Int'>
+    readonly createdAt: FieldRef<"Session", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * isLogin findUnique
+   * Session findUnique
    */
-  export type isLoginFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: SessionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
+    include?: SessionInclude<ExtArgs> | null
     /**
-     * Filter, which isLogin to fetch.
+     * Filter, which Session to fetch.
      */
-    where: isLoginWhereUniqueInput
+    where: SessionWhereUniqueInput
   }
 
   /**
-   * isLogin findUniqueOrThrow
+   * Session findUniqueOrThrow
    */
-  export type isLoginFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: SessionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
+    include?: SessionInclude<ExtArgs> | null
     /**
-     * Filter, which isLogin to fetch.
+     * Filter, which Session to fetch.
      */
-    where: isLoginWhereUniqueInput
+    where: SessionWhereUniqueInput
   }
 
   /**
-   * isLogin findFirst
+   * Session findFirst
    */
-  export type isLoginFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: SessionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
+    include?: SessionInclude<ExtArgs> | null
     /**
-     * Filter, which isLogin to fetch.
+     * Filter, which Session to fetch.
      */
-    where?: isLoginWhereInput
+    where?: SessionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of isLogins to fetch.
+     * Determine the order of Sessions to fetch.
      */
-    orderBy?: isLoginOrderByWithRelationInput | isLoginOrderByWithRelationInput[]
+    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for isLogins.
+     * Sets the position for searching for Sessions.
      */
-    cursor?: isLoginWhereUniqueInput
+    cursor?: SessionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` isLogins from the position of the cursor.
+     * Take `±n` Sessions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` isLogins.
+     * Skip the first `n` Sessions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of isLogins.
+     * Filter by unique combinations of Sessions.
      */
-    distinct?: IsLoginScalarFieldEnum | IsLoginScalarFieldEnum[]
+    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
   }
 
   /**
-   * isLogin findFirstOrThrow
+   * Session findFirstOrThrow
    */
-  export type isLoginFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: SessionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
+    include?: SessionInclude<ExtArgs> | null
     /**
-     * Filter, which isLogin to fetch.
+     * Filter, which Session to fetch.
      */
-    where?: isLoginWhereInput
+    where?: SessionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of isLogins to fetch.
+     * Determine the order of Sessions to fetch.
      */
-    orderBy?: isLoginOrderByWithRelationInput | isLoginOrderByWithRelationInput[]
+    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for isLogins.
+     * Sets the position for searching for Sessions.
      */
-    cursor?: isLoginWhereUniqueInput
+    cursor?: SessionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` isLogins from the position of the cursor.
+     * Take `±n` Sessions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` isLogins.
+     * Skip the first `n` Sessions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of isLogins.
+     * Filter by unique combinations of Sessions.
      */
-    distinct?: IsLoginScalarFieldEnum | IsLoginScalarFieldEnum[]
+    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
   }
 
   /**
-   * isLogin findMany
+   * Session findMany
    */
-  export type isLoginFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: SessionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
+    include?: SessionInclude<ExtArgs> | null
     /**
-     * Filter, which isLogins to fetch.
+     * Filter, which Sessions to fetch.
      */
-    where?: isLoginWhereInput
+    where?: SessionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of isLogins to fetch.
+     * Determine the order of Sessions to fetch.
      */
-    orderBy?: isLoginOrderByWithRelationInput | isLoginOrderByWithRelationInput[]
+    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing isLogins.
+     * Sets the position for listing Sessions.
      */
-    cursor?: isLoginWhereUniqueInput
+    cursor?: SessionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` isLogins from the position of the cursor.
+     * Take `±n` Sessions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` isLogins.
+     * Skip the first `n` Sessions.
      */
     skip?: number
-    distinct?: IsLoginScalarFieldEnum | IsLoginScalarFieldEnum[]
+    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
   }
 
   /**
-   * isLogin create
+   * Session create
    */
-  export type isLoginCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: SessionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
+    include?: SessionInclude<ExtArgs> | null
     /**
-     * The data needed to create a isLogin.
+     * The data needed to create a Session.
      */
-    data: XOR<isLoginCreateInput, isLoginUncheckedCreateInput>
+    data: XOR<SessionCreateInput, SessionUncheckedCreateInput>
   }
 
   /**
-   * isLogin createMany
+   * Session createMany
    */
-  export type isLoginCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many isLogins.
+     * The data used to create many Sessions.
      */
-    data: isLoginCreateManyInput | isLoginCreateManyInput[]
+    data: SessionCreateManyInput | SessionCreateManyInput[]
   }
 
   /**
-   * isLogin createManyAndReturn
+   * Session createManyAndReturn
    */
-  export type isLoginCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelectCreateManyAndReturn<ExtArgs> | null
+    select?: SessionSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * The data used to create many isLogins.
+     * The data used to create many Sessions.
      */
-    data: isLoginCreateManyInput | isLoginCreateManyInput[]
+    data: SessionCreateManyInput | SessionCreateManyInput[]
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: SessionIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * isLogin update
+   * Session update
    */
-  export type isLoginUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: SessionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
+    include?: SessionInclude<ExtArgs> | null
     /**
-     * The data needed to update a isLogin.
+     * The data needed to update a Session.
      */
-    data: XOR<isLoginUpdateInput, isLoginUncheckedUpdateInput>
+    data: XOR<SessionUpdateInput, SessionUncheckedUpdateInput>
     /**
-     * Choose, which isLogin to update.
+     * Choose, which Session to update.
      */
-    where: isLoginWhereUniqueInput
+    where: SessionWhereUniqueInput
   }
 
   /**
-   * isLogin updateMany
+   * Session updateMany
    */
-  export type isLoginUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update isLogins.
+     * The data used to update Sessions.
      */
-    data: XOR<isLoginUpdateManyMutationInput, isLoginUncheckedUpdateManyInput>
+    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyInput>
     /**
-     * Filter which isLogins to update
+     * Filter which Sessions to update
      */
-    where?: isLoginWhereInput
+    where?: SessionWhereInput
   }
 
   /**
-   * isLogin upsert
+   * Session upsert
    */
-  export type isLoginUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: SessionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
+    include?: SessionInclude<ExtArgs> | null
     /**
-     * The filter to search for the isLogin to update in case it exists.
+     * The filter to search for the Session to update in case it exists.
      */
-    where: isLoginWhereUniqueInput
+    where: SessionWhereUniqueInput
     /**
-     * In case the isLogin found by the `where` argument doesn't exist, create a new isLogin with this data.
+     * In case the Session found by the `where` argument doesn't exist, create a new Session with this data.
      */
-    create: XOR<isLoginCreateInput, isLoginUncheckedCreateInput>
+    create: XOR<SessionCreateInput, SessionUncheckedCreateInput>
     /**
-     * In case the isLogin was found with the provided `where` argument, update it with this data.
+     * In case the Session was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<isLoginUpdateInput, isLoginUncheckedUpdateInput>
+    update: XOR<SessionUpdateInput, SessionUncheckedUpdateInput>
   }
 
   /**
-   * isLogin delete
+   * Session delete
    */
-  export type isLoginDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: SessionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
+    include?: SessionInclude<ExtArgs> | null
     /**
-     * Filter which isLogin to delete.
+     * Filter which Session to delete.
      */
-    where: isLoginWhereUniqueInput
+    where: SessionWhereUniqueInput
   }
 
   /**
-   * isLogin deleteMany
+   * Session deleteMany
    */
-  export type isLoginDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which isLogins to delete
+     * Filter which Sessions to delete
      */
-    where?: isLoginWhereInput
+    where?: SessionWhereInput
   }
 
   /**
-   * isLogin without action
+   * Session without action
    */
-  export type isLoginDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SessionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the isLogin
+     * Select specific fields to fetch from the Session
      */
-    select?: isLoginSelect<ExtArgs> | null
+    select?: SessionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: isLoginInclude<ExtArgs> | null
+    include?: SessionInclude<ExtArgs> | null
   }
 
 
@@ -3941,7 +4035,8 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    uname: 'uname'
+    uname: 'uname',
+    createdAt: 'createdAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3952,18 +4047,20 @@ export namespace Prisma {
     amount: 'amount',
     type: 'type',
     userId: 'userId',
+    toUserId: 'toUserId',
     createdAt: 'createdAt'
   };
 
   export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
 
 
-  export const IsLoginScalarFieldEnum: {
+  export const SessionScalarFieldEnum: {
     id: 'id',
-    userId: 'userId'
+    userId: 'userId',
+    createdAt: 'createdAt'
   };
 
-  export type IsLoginScalarFieldEnum = (typeof IsLoginScalarFieldEnum)[keyof typeof IsLoginScalarFieldEnum]
+  export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3972,6 +4069,14 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -3994,16 +4099,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
+   * Reference to a field of type 'DateTime'
    */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
     
 
 
   /**
-   * Reference to a field of type 'DateTime'
+   * Reference to a field of type 'Float'
    */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
   /**
    * Deep Input Types
@@ -4016,15 +4121,19 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
     uname?: StringFilter<"User"> | string
-    trx?: TransactionListRelationFilter
-    isLogin?: IsLoginListRelationFilter
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    sessions?: SessionListRelationFilter
+    trxUser?: TransactionListRelationFilter
+    trxToUser?: TransactionListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     uname?: SortOrder
-    trx?: TransactionOrderByRelationAggregateInput
-    isLogin?: isLoginOrderByRelationAggregateInput
+    createdAt?: SortOrder
+    sessions?: SessionOrderByRelationAggregateInput
+    trxUser?: TransactionOrderByRelationAggregateInput
+    trxToUser?: TransactionOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4033,13 +4142,16 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    trx?: TransactionListRelationFilter
-    isLogin?: IsLoginListRelationFilter
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    sessions?: SessionListRelationFilter
+    trxUser?: TransactionListRelationFilter
+    trxToUser?: TransactionListRelationFilter
   }, "id" | "uname">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     uname?: SortOrder
+    createdAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -4053,6 +4165,7 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
     uname?: StringWithAggregatesFilter<"User"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
   export type TransactionWhereInput = {
@@ -4063,8 +4176,10 @@ export namespace Prisma {
     amount?: FloatFilter<"Transaction"> | number
     type?: StringFilter<"Transaction"> | string
     userId?: IntFilter<"Transaction"> | number
+    toUserId?: IntNullableFilter<"Transaction"> | number | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
+    toUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }
 
   export type TransactionOrderByWithRelationInput = {
@@ -4072,8 +4187,10 @@ export namespace Prisma {
     amount?: SortOrder
     type?: SortOrder
     userId?: SortOrder
+    toUserId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
+    toUser?: UserOrderByWithRelationInput
   }
 
   export type TransactionWhereUniqueInput = Prisma.AtLeast<{
@@ -4084,8 +4201,10 @@ export namespace Prisma {
     amount?: FloatFilter<"Transaction"> | number
     type?: StringFilter<"Transaction"> | string
     userId?: IntFilter<"Transaction"> | number
+    toUserId?: IntNullableFilter<"Transaction"> | number | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
+    toUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
   }, "id">
 
   export type TransactionOrderByWithAggregationInput = {
@@ -4093,6 +4212,7 @@ export namespace Prisma {
     amount?: SortOrder
     type?: SortOrder
     userId?: SortOrder
+    toUserId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: TransactionCountOrderByAggregateInput
     _avg?: TransactionAvgOrderByAggregateInput
@@ -4109,96 +4229,114 @@ export namespace Prisma {
     amount?: FloatWithAggregatesFilter<"Transaction"> | number
     type?: StringWithAggregatesFilter<"Transaction"> | string
     userId?: IntWithAggregatesFilter<"Transaction"> | number
+    toUserId?: IntNullableWithAggregatesFilter<"Transaction"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
   }
 
-  export type isLoginWhereInput = {
-    AND?: isLoginWhereInput | isLoginWhereInput[]
-    OR?: isLoginWhereInput[]
-    NOT?: isLoginWhereInput | isLoginWhereInput[]
-    id?: IntFilter<"isLogin"> | number
-    userId?: IntFilter<"isLogin"> | number
+  export type SessionWhereInput = {
+    AND?: SessionWhereInput | SessionWhereInput[]
+    OR?: SessionWhereInput[]
+    NOT?: SessionWhereInput | SessionWhereInput[]
+    id?: IntFilter<"Session"> | number
+    userId?: IntFilter<"Session"> | number
+    createdAt?: DateTimeFilter<"Session"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
-  export type isLoginOrderByWithRelationInput = {
+  export type SessionOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
-  export type isLoginWhereUniqueInput = Prisma.AtLeast<{
+  export type SessionWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: isLoginWhereInput | isLoginWhereInput[]
-    OR?: isLoginWhereInput[]
-    NOT?: isLoginWhereInput | isLoginWhereInput[]
-    userId?: IntFilter<"isLogin"> | number
+    AND?: SessionWhereInput | SessionWhereInput[]
+    OR?: SessionWhereInput[]
+    NOT?: SessionWhereInput | SessionWhereInput[]
+    userId?: IntFilter<"Session"> | number
+    createdAt?: DateTimeFilter<"Session"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id">
 
-  export type isLoginOrderByWithAggregationInput = {
+  export type SessionOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    _count?: isLoginCountOrderByAggregateInput
-    _avg?: isLoginAvgOrderByAggregateInput
-    _max?: isLoginMaxOrderByAggregateInput
-    _min?: isLoginMinOrderByAggregateInput
-    _sum?: isLoginSumOrderByAggregateInput
+    createdAt?: SortOrder
+    _count?: SessionCountOrderByAggregateInput
+    _avg?: SessionAvgOrderByAggregateInput
+    _max?: SessionMaxOrderByAggregateInput
+    _min?: SessionMinOrderByAggregateInput
+    _sum?: SessionSumOrderByAggregateInput
   }
 
-  export type isLoginScalarWhereWithAggregatesInput = {
-    AND?: isLoginScalarWhereWithAggregatesInput | isLoginScalarWhereWithAggregatesInput[]
-    OR?: isLoginScalarWhereWithAggregatesInput[]
-    NOT?: isLoginScalarWhereWithAggregatesInput | isLoginScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"isLogin"> | number
-    userId?: IntWithAggregatesFilter<"isLogin"> | number
+  export type SessionScalarWhereWithAggregatesInput = {
+    AND?: SessionScalarWhereWithAggregatesInput | SessionScalarWhereWithAggregatesInput[]
+    OR?: SessionScalarWhereWithAggregatesInput[]
+    NOT?: SessionScalarWhereWithAggregatesInput | SessionScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Session"> | number
+    userId?: IntWithAggregatesFilter<"Session"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
   }
 
   export type UserCreateInput = {
     uname: string
-    trx?: TransactionCreateNestedManyWithoutUserInput
-    isLogin?: isLoginCreateNestedManyWithoutUserInput
+    createdAt?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    trxUser?: TransactionCreateNestedManyWithoutUserInput
+    trxToUser?: TransactionCreateNestedManyWithoutToUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
     uname: string
-    trx?: TransactionUncheckedCreateNestedManyWithoutUserInput
-    isLogin?: isLoginUncheckedCreateNestedManyWithoutUserInput
+    createdAt?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    trxUser?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    trxToUser?: TransactionUncheckedCreateNestedManyWithoutToUserInput
   }
 
   export type UserUpdateInput = {
     uname?: StringFieldUpdateOperationsInput | string
-    trx?: TransactionUpdateManyWithoutUserNestedInput
-    isLogin?: isLoginUpdateManyWithoutUserNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    trxUser?: TransactionUpdateManyWithoutUserNestedInput
+    trxToUser?: TransactionUpdateManyWithoutToUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     uname?: StringFieldUpdateOperationsInput | string
-    trx?: TransactionUncheckedUpdateManyWithoutUserNestedInput
-    isLogin?: isLoginUncheckedUpdateManyWithoutUserNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    trxUser?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    trxToUser?: TransactionUncheckedUpdateManyWithoutToUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: number
     uname: string
+    createdAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
     uname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     uname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TransactionCreateInput = {
     amount: number
     type: string
     createdAt?: Date | string
-    user: UserCreateNestedOneWithoutTrxInput
+    user: UserCreateNestedOneWithoutTrxUserInput
+    toUser?: UserCreateNestedOneWithoutTrxToUserInput
   }
 
   export type TransactionUncheckedCreateInput = {
@@ -4206,6 +4344,7 @@ export namespace Prisma {
     amount: number
     type: string
     userId: number
+    toUserId?: number | null
     createdAt?: Date | string
   }
 
@@ -4213,7 +4352,8 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutTrxNestedInput
+    user?: UserUpdateOneRequiredWithoutTrxUserNestedInput
+    toUser?: UserUpdateOneWithoutTrxToUserNestedInput
   }
 
   export type TransactionUncheckedUpdateInput = {
@@ -4221,6 +4361,7 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
+    toUserId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4229,6 +4370,7 @@ export namespace Prisma {
     amount: number
     type: string
     userId: number
+    toUserId?: number | null
     createdAt?: Date | string
   }
 
@@ -4243,39 +4385,46 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
+    toUserId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type isLoginCreateInput = {
-    user: UserCreateNestedOneWithoutIsLoginInput
+  export type SessionCreateInput = {
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutSessionsInput
   }
 
-  export type isLoginUncheckedCreateInput = {
+  export type SessionUncheckedCreateInput = {
     id?: number
     userId: number
+    createdAt?: Date | string
   }
 
-  export type isLoginUpdateInput = {
-    user?: UserUpdateOneRequiredWithoutIsLoginNestedInput
+  export type SessionUpdateInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutSessionsNestedInput
   }
 
-  export type isLoginUncheckedUpdateInput = {
+  export type SessionUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type isLoginCreateManyInput = {
+  export type SessionCreateManyInput = {
     id?: number
     userId: number
+    createdAt?: Date | string
   }
 
-  export type isLoginUpdateManyMutationInput = {
-
+  export type SessionUpdateManyMutationInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type isLoginUncheckedUpdateManyInput = {
+  export type SessionUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4303,29 +4452,41 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type SessionListRelationFilter = {
+    every?: SessionWhereInput
+    some?: SessionWhereInput
+    none?: SessionWhereInput
+  }
+
   export type TransactionListRelationFilter = {
     every?: TransactionWhereInput
     some?: TransactionWhereInput
     none?: TransactionWhereInput
   }
 
-  export type IsLoginListRelationFilter = {
-    every?: isLoginWhereInput
-    some?: isLoginWhereInput
-    none?: isLoginWhereInput
+  export type SessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type TransactionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type isLoginOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     uname?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -4335,11 +4496,13 @@ export namespace Prisma {
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     uname?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     uname?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -4379,6 +4542,20 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[]
@@ -4390,15 +4567,15 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type UserRelationFilter = {
@@ -4406,11 +4583,22 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
+  export type UserNullableRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type TransactionCountOrderByAggregateInput = {
     id?: SortOrder
     amount?: SortOrder
     type?: SortOrder
     userId?: SortOrder
+    toUserId?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4418,6 +4606,7 @@ export namespace Prisma {
     id?: SortOrder
     amount?: SortOrder
     userId?: SortOrder
+    toUserId?: SortOrder
   }
 
   export type TransactionMaxOrderByAggregateInput = {
@@ -4425,6 +4614,7 @@ export namespace Prisma {
     amount?: SortOrder
     type?: SortOrder
     userId?: SortOrder
+    toUserId?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4433,6 +4623,7 @@ export namespace Prisma {
     amount?: SortOrder
     type?: SortOrder
     userId?: SortOrder
+    toUserId?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4440,6 +4631,7 @@ export namespace Prisma {
     id?: SortOrder
     amount?: SortOrder
     userId?: SortOrder
+    toUserId?: SortOrder
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -4458,43 +4650,55 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type isLoginCountOrderByAggregateInput = {
+  export type SessionCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SessionAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
   }
 
-  export type isLoginAvgOrderByAggregateInput = {
+  export type SessionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SessionMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type SessionSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
   }
 
-  export type isLoginMaxOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type isLoginMinOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type isLoginSumOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
+  export type SessionCreateNestedManyWithoutUserInput = {
+    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
+    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
   export type TransactionCreateNestedManyWithoutUserInput = {
@@ -4504,11 +4708,18 @@ export namespace Prisma {
     connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
-  export type isLoginCreateNestedManyWithoutUserInput = {
-    create?: XOR<isLoginCreateWithoutUserInput, isLoginUncheckedCreateWithoutUserInput> | isLoginCreateWithoutUserInput[] | isLoginUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: isLoginCreateOrConnectWithoutUserInput | isLoginCreateOrConnectWithoutUserInput[]
-    createMany?: isLoginCreateManyUserInputEnvelope
-    connect?: isLoginWhereUniqueInput | isLoginWhereUniqueInput[]
+  export type TransactionCreateNestedManyWithoutToUserInput = {
+    create?: XOR<TransactionCreateWithoutToUserInput, TransactionUncheckedCreateWithoutToUserInput> | TransactionCreateWithoutToUserInput[] | TransactionUncheckedCreateWithoutToUserInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutToUserInput | TransactionCreateOrConnectWithoutToUserInput[]
+    createMany?: TransactionCreateManyToUserInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+  }
+
+  export type SessionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
+    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
   export type TransactionUncheckedCreateNestedManyWithoutUserInput = {
@@ -4518,15 +4729,33 @@ export namespace Prisma {
     connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
-  export type isLoginUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<isLoginCreateWithoutUserInput, isLoginUncheckedCreateWithoutUserInput> | isLoginCreateWithoutUserInput[] | isLoginUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: isLoginCreateOrConnectWithoutUserInput | isLoginCreateOrConnectWithoutUserInput[]
-    createMany?: isLoginCreateManyUserInputEnvelope
-    connect?: isLoginWhereUniqueInput | isLoginWhereUniqueInput[]
+  export type TransactionUncheckedCreateNestedManyWithoutToUserInput = {
+    create?: XOR<TransactionCreateWithoutToUserInput, TransactionUncheckedCreateWithoutToUserInput> | TransactionCreateWithoutToUserInput[] | TransactionUncheckedCreateWithoutToUserInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutToUserInput | TransactionCreateOrConnectWithoutToUserInput[]
+    createMany?: TransactionCreateManyToUserInputEnvelope
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type SessionUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
+    set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
   export type TransactionUpdateManyWithoutUserNestedInput = {
@@ -4543,18 +4772,18 @@ export namespace Prisma {
     deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
-  export type isLoginUpdateManyWithoutUserNestedInput = {
-    create?: XOR<isLoginCreateWithoutUserInput, isLoginUncheckedCreateWithoutUserInput> | isLoginCreateWithoutUserInput[] | isLoginUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: isLoginCreateOrConnectWithoutUserInput | isLoginCreateOrConnectWithoutUserInput[]
-    upsert?: isLoginUpsertWithWhereUniqueWithoutUserInput | isLoginUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: isLoginCreateManyUserInputEnvelope
-    set?: isLoginWhereUniqueInput | isLoginWhereUniqueInput[]
-    disconnect?: isLoginWhereUniqueInput | isLoginWhereUniqueInput[]
-    delete?: isLoginWhereUniqueInput | isLoginWhereUniqueInput[]
-    connect?: isLoginWhereUniqueInput | isLoginWhereUniqueInput[]
-    update?: isLoginUpdateWithWhereUniqueWithoutUserInput | isLoginUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: isLoginUpdateManyWithWhereWithoutUserInput | isLoginUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: isLoginScalarWhereInput | isLoginScalarWhereInput[]
+  export type TransactionUpdateManyWithoutToUserNestedInput = {
+    create?: XOR<TransactionCreateWithoutToUserInput, TransactionUncheckedCreateWithoutToUserInput> | TransactionCreateWithoutToUserInput[] | TransactionUncheckedCreateWithoutToUserInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutToUserInput | TransactionCreateOrConnectWithoutToUserInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutToUserInput | TransactionUpsertWithWhereUniqueWithoutToUserInput[]
+    createMany?: TransactionCreateManyToUserInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutToUserInput | TransactionUpdateWithWhereUniqueWithoutToUserInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutToUserInput | TransactionUpdateManyWithWhereWithoutToUserInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -4563,6 +4792,20 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
+    set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
   export type TransactionUncheckedUpdateManyWithoutUserNestedInput = {
@@ -4579,23 +4822,29 @@ export namespace Prisma {
     deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
-  export type isLoginUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<isLoginCreateWithoutUserInput, isLoginUncheckedCreateWithoutUserInput> | isLoginCreateWithoutUserInput[] | isLoginUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: isLoginCreateOrConnectWithoutUserInput | isLoginCreateOrConnectWithoutUserInput[]
-    upsert?: isLoginUpsertWithWhereUniqueWithoutUserInput | isLoginUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: isLoginCreateManyUserInputEnvelope
-    set?: isLoginWhereUniqueInput | isLoginWhereUniqueInput[]
-    disconnect?: isLoginWhereUniqueInput | isLoginWhereUniqueInput[]
-    delete?: isLoginWhereUniqueInput | isLoginWhereUniqueInput[]
-    connect?: isLoginWhereUniqueInput | isLoginWhereUniqueInput[]
-    update?: isLoginUpdateWithWhereUniqueWithoutUserInput | isLoginUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: isLoginUpdateManyWithWhereWithoutUserInput | isLoginUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: isLoginScalarWhereInput | isLoginScalarWhereInput[]
+  export type TransactionUncheckedUpdateManyWithoutToUserNestedInput = {
+    create?: XOR<TransactionCreateWithoutToUserInput, TransactionUncheckedCreateWithoutToUserInput> | TransactionCreateWithoutToUserInput[] | TransactionUncheckedCreateWithoutToUserInput[]
+    connectOrCreate?: TransactionCreateOrConnectWithoutToUserInput | TransactionCreateOrConnectWithoutToUserInput[]
+    upsert?: TransactionUpsertWithWhereUniqueWithoutToUserInput | TransactionUpsertWithWhereUniqueWithoutToUserInput[]
+    createMany?: TransactionCreateManyToUserInputEnvelope
+    set?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    disconnect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    delete?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    connect?: TransactionWhereUniqueInput | TransactionWhereUniqueInput[]
+    update?: TransactionUpdateWithWhereUniqueWithoutToUserInput | TransactionUpdateWithWhereUniqueWithoutToUserInput[]
+    updateMany?: TransactionUpdateManyWithWhereWithoutToUserInput | TransactionUpdateManyWithWhereWithoutToUserInput[]
+    deleteMany?: TransactionScalarWhereInput | TransactionScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutTrxInput = {
-    create?: XOR<UserCreateWithoutTrxInput, UserUncheckedCreateWithoutTrxInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTrxInput
+  export type UserCreateNestedOneWithoutTrxUserInput = {
+    create?: XOR<UserCreateWithoutTrxUserInput, UserUncheckedCreateWithoutTrxUserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTrxUserInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutTrxToUserInput = {
+    create?: XOR<UserCreateWithoutTrxToUserInput, UserUncheckedCreateWithoutTrxToUserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTrxToUserInput
     connect?: UserWhereUniqueInput
   }
 
@@ -4607,30 +4856,44 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type UserUpdateOneRequiredWithoutTrxUserNestedInput = {
+    create?: XOR<UserCreateWithoutTrxUserInput, UserUncheckedCreateWithoutTrxUserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTrxUserInput
+    upsert?: UserUpsertWithoutTrxUserInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTrxUserInput, UserUpdateWithoutTrxUserInput>, UserUncheckedUpdateWithoutTrxUserInput>
   }
 
-  export type UserUpdateOneRequiredWithoutTrxNestedInput = {
-    create?: XOR<UserCreateWithoutTrxInput, UserUncheckedCreateWithoutTrxInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTrxInput
-    upsert?: UserUpsertWithoutTrxInput
+  export type UserUpdateOneWithoutTrxToUserNestedInput = {
+    create?: XOR<UserCreateWithoutTrxToUserInput, UserUncheckedCreateWithoutTrxToUserInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTrxToUserInput
+    upsert?: UserUpsertWithoutTrxToUserInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTrxInput, UserUpdateWithoutTrxInput>, UserUncheckedUpdateWithoutTrxInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTrxToUserInput, UserUpdateWithoutTrxToUserInput>, UserUncheckedUpdateWithoutTrxToUserInput>
   }
 
-  export type UserCreateNestedOneWithoutIsLoginInput = {
-    create?: XOR<UserCreateWithoutIsLoginInput, UserUncheckedCreateWithoutIsLoginInput>
-    connectOrCreate?: UserCreateOrConnectWithoutIsLoginInput
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type UserCreateNestedOneWithoutSessionsInput = {
+    create?: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSessionsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutIsLoginNestedInput = {
-    create?: XOR<UserCreateWithoutIsLoginInput, UserUncheckedCreateWithoutIsLoginInput>
-    connectOrCreate?: UserCreateOrConnectWithoutIsLoginInput
-    upsert?: UserUpsertWithoutIsLoginInput
+  export type UserUpdateOneRequiredWithoutSessionsNestedInput = {
+    create?: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSessionsInput
+    upsert?: UserUpsertWithoutSessionsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutIsLoginInput, UserUpdateWithoutIsLoginInput>, UserUncheckedUpdateWithoutIsLoginInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -4656,6 +4919,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -4702,7 +4976,7 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
     notIn?: Date[] | string[]
@@ -4710,7 +4984,21 @@ export namespace Prisma {
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -4729,30 +5017,63 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type SessionCreateWithoutUserInput = {
+    createdAt?: Date | string
+  }
+
+  export type SessionUncheckedCreateWithoutUserInput = {
+    id?: number
+    createdAt?: Date | string
+  }
+
+  export type SessionCreateOrConnectWithoutUserInput = {
+    where: SessionWhereUniqueInput
+    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
+  }
+
+  export type SessionCreateManyUserInputEnvelope = {
+    data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
   }
 
   export type TransactionCreateWithoutUserInput = {
     amount: number
     type: string
     createdAt?: Date | string
+    toUser?: UserCreateNestedOneWithoutTrxToUserInput
   }
 
   export type TransactionUncheckedCreateWithoutUserInput = {
     id?: number
     amount: number
     type: string
+    toUserId?: number | null
     createdAt?: Date | string
   }
 
@@ -4765,21 +5086,53 @@ export namespace Prisma {
     data: TransactionCreateManyUserInput | TransactionCreateManyUserInput[]
   }
 
-  export type isLoginCreateWithoutUserInput = {
-
+  export type TransactionCreateWithoutToUserInput = {
+    amount: number
+    type: string
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutTrxUserInput
   }
 
-  export type isLoginUncheckedCreateWithoutUserInput = {
+  export type TransactionUncheckedCreateWithoutToUserInput = {
     id?: number
+    amount: number
+    type: string
+    userId: number
+    createdAt?: Date | string
   }
 
-  export type isLoginCreateOrConnectWithoutUserInput = {
-    where: isLoginWhereUniqueInput
-    create: XOR<isLoginCreateWithoutUserInput, isLoginUncheckedCreateWithoutUserInput>
+  export type TransactionCreateOrConnectWithoutToUserInput = {
+    where: TransactionWhereUniqueInput
+    create: XOR<TransactionCreateWithoutToUserInput, TransactionUncheckedCreateWithoutToUserInput>
   }
 
-  export type isLoginCreateManyUserInputEnvelope = {
-    data: isLoginCreateManyUserInput | isLoginCreateManyUserInput[]
+  export type TransactionCreateManyToUserInputEnvelope = {
+    data: TransactionCreateManyToUserInput | TransactionCreateManyToUserInput[]
+  }
+
+  export type SessionUpsertWithWhereUniqueWithoutUserInput = {
+    where: SessionWhereUniqueInput
+    update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
+    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
+  }
+
+  export type SessionUpdateWithWhereUniqueWithoutUserInput = {
+    where: SessionWhereUniqueInput
+    data: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SessionUpdateManyWithWhereWithoutUserInput = {
+    where: SessionScalarWhereInput
+    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SessionScalarWhereInput = {
+    AND?: SessionScalarWhereInput | SessionScalarWhereInput[]
+    OR?: SessionScalarWhereInput[]
+    NOT?: SessionScalarWhereInput | SessionScalarWhereInput[]
+    id?: IntFilter<"Session"> | number
+    userId?: IntFilter<"Session"> | number
+    createdAt?: DateTimeFilter<"Session"> | Date | string
   }
 
   export type TransactionUpsertWithWhereUniqueWithoutUserInput = {
@@ -4806,130 +5159,211 @@ export namespace Prisma {
     amount?: FloatFilter<"Transaction"> | number
     type?: StringFilter<"Transaction"> | string
     userId?: IntFilter<"Transaction"> | number
+    toUserId?: IntNullableFilter<"Transaction"> | number | null
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
   }
 
-  export type isLoginUpsertWithWhereUniqueWithoutUserInput = {
-    where: isLoginWhereUniqueInput
-    update: XOR<isLoginUpdateWithoutUserInput, isLoginUncheckedUpdateWithoutUserInput>
-    create: XOR<isLoginCreateWithoutUserInput, isLoginUncheckedCreateWithoutUserInput>
+  export type TransactionUpsertWithWhereUniqueWithoutToUserInput = {
+    where: TransactionWhereUniqueInput
+    update: XOR<TransactionUpdateWithoutToUserInput, TransactionUncheckedUpdateWithoutToUserInput>
+    create: XOR<TransactionCreateWithoutToUserInput, TransactionUncheckedCreateWithoutToUserInput>
   }
 
-  export type isLoginUpdateWithWhereUniqueWithoutUserInput = {
-    where: isLoginWhereUniqueInput
-    data: XOR<isLoginUpdateWithoutUserInput, isLoginUncheckedUpdateWithoutUserInput>
+  export type TransactionUpdateWithWhereUniqueWithoutToUserInput = {
+    where: TransactionWhereUniqueInput
+    data: XOR<TransactionUpdateWithoutToUserInput, TransactionUncheckedUpdateWithoutToUserInput>
   }
 
-  export type isLoginUpdateManyWithWhereWithoutUserInput = {
-    where: isLoginScalarWhereInput
-    data: XOR<isLoginUpdateManyMutationInput, isLoginUncheckedUpdateManyWithoutUserInput>
+  export type TransactionUpdateManyWithWhereWithoutToUserInput = {
+    where: TransactionScalarWhereInput
+    data: XOR<TransactionUpdateManyMutationInput, TransactionUncheckedUpdateManyWithoutToUserInput>
   }
 
-  export type isLoginScalarWhereInput = {
-    AND?: isLoginScalarWhereInput | isLoginScalarWhereInput[]
-    OR?: isLoginScalarWhereInput[]
-    NOT?: isLoginScalarWhereInput | isLoginScalarWhereInput[]
-    id?: IntFilter<"isLogin"> | number
-    userId?: IntFilter<"isLogin"> | number
-  }
-
-  export type UserCreateWithoutTrxInput = {
+  export type UserCreateWithoutTrxUserInput = {
     uname: string
-    isLogin?: isLoginCreateNestedManyWithoutUserInput
+    createdAt?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    trxToUser?: TransactionCreateNestedManyWithoutToUserInput
   }
 
-  export type UserUncheckedCreateWithoutTrxInput = {
+  export type UserUncheckedCreateWithoutTrxUserInput = {
     id?: number
     uname: string
-    isLogin?: isLoginUncheckedCreateNestedManyWithoutUserInput
+    createdAt?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    trxToUser?: TransactionUncheckedCreateNestedManyWithoutToUserInput
   }
 
-  export type UserCreateOrConnectWithoutTrxInput = {
+  export type UserCreateOrConnectWithoutTrxUserInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutTrxInput, UserUncheckedCreateWithoutTrxInput>
+    create: XOR<UserCreateWithoutTrxUserInput, UserUncheckedCreateWithoutTrxUserInput>
   }
 
-  export type UserUpsertWithoutTrxInput = {
-    update: XOR<UserUpdateWithoutTrxInput, UserUncheckedUpdateWithoutTrxInput>
-    create: XOR<UserCreateWithoutTrxInput, UserUncheckedCreateWithoutTrxInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutTrxInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutTrxInput, UserUncheckedUpdateWithoutTrxInput>
-  }
-
-  export type UserUpdateWithoutTrxInput = {
-    uname?: StringFieldUpdateOperationsInput | string
-    isLogin?: isLoginUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutTrxInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    uname?: StringFieldUpdateOperationsInput | string
-    isLogin?: isLoginUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserCreateWithoutIsLoginInput = {
+  export type UserCreateWithoutTrxToUserInput = {
     uname: string
-    trx?: TransactionCreateNestedManyWithoutUserInput
+    createdAt?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    trxUser?: TransactionCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutIsLoginInput = {
+  export type UserUncheckedCreateWithoutTrxToUserInput = {
     id?: number
     uname: string
-    trx?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    createdAt?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    trxUser?: TransactionUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutIsLoginInput = {
+  export type UserCreateOrConnectWithoutTrxToUserInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutIsLoginInput, UserUncheckedCreateWithoutIsLoginInput>
+    create: XOR<UserCreateWithoutTrxToUserInput, UserUncheckedCreateWithoutTrxToUserInput>
   }
 
-  export type UserUpsertWithoutIsLoginInput = {
-    update: XOR<UserUpdateWithoutIsLoginInput, UserUncheckedUpdateWithoutIsLoginInput>
-    create: XOR<UserCreateWithoutIsLoginInput, UserUncheckedCreateWithoutIsLoginInput>
+  export type UserUpsertWithoutTrxUserInput = {
+    update: XOR<UserUpdateWithoutTrxUserInput, UserUncheckedUpdateWithoutTrxUserInput>
+    create: XOR<UserCreateWithoutTrxUserInput, UserUncheckedCreateWithoutTrxUserInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutIsLoginInput = {
+  export type UserUpdateToOneWithWhereWithoutTrxUserInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutIsLoginInput, UserUncheckedUpdateWithoutIsLoginInput>
+    data: XOR<UserUpdateWithoutTrxUserInput, UserUncheckedUpdateWithoutTrxUserInput>
   }
 
-  export type UserUpdateWithoutIsLoginInput = {
+  export type UserUpdateWithoutTrxUserInput = {
     uname?: StringFieldUpdateOperationsInput | string
-    trx?: TransactionUpdateManyWithoutUserNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    trxToUser?: TransactionUpdateManyWithoutToUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutIsLoginInput = {
+  export type UserUncheckedUpdateWithoutTrxUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     uname?: StringFieldUpdateOperationsInput | string
-    trx?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    trxToUser?: TransactionUncheckedUpdateManyWithoutToUserNestedInput
+  }
+
+  export type UserUpsertWithoutTrxToUserInput = {
+    update: XOR<UserUpdateWithoutTrxToUserInput, UserUncheckedUpdateWithoutTrxToUserInput>
+    create: XOR<UserCreateWithoutTrxToUserInput, UserUncheckedCreateWithoutTrxToUserInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTrxToUserInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTrxToUserInput, UserUncheckedUpdateWithoutTrxToUserInput>
+  }
+
+  export type UserUpdateWithoutTrxToUserInput = {
+    uname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    trxUser?: TransactionUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTrxToUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    trxUser?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutSessionsInput = {
+    uname: string
+    createdAt?: Date | string
+    trxUser?: TransactionCreateNestedManyWithoutUserInput
+    trxToUser?: TransactionCreateNestedManyWithoutToUserInput
+  }
+
+  export type UserUncheckedCreateWithoutSessionsInput = {
+    id?: number
+    uname: string
+    createdAt?: Date | string
+    trxUser?: TransactionUncheckedCreateNestedManyWithoutUserInput
+    trxToUser?: TransactionUncheckedCreateNestedManyWithoutToUserInput
+  }
+
+  export type UserCreateOrConnectWithoutSessionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
+  }
+
+  export type UserUpsertWithoutSessionsInput = {
+    update: XOR<UserUpdateWithoutSessionsInput, UserUncheckedUpdateWithoutSessionsInput>
+    create: XOR<UserCreateWithoutSessionsInput, UserUncheckedCreateWithoutSessionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSessionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSessionsInput, UserUncheckedUpdateWithoutSessionsInput>
+  }
+
+  export type UserUpdateWithoutSessionsInput = {
+    uname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    trxUser?: TransactionUpdateManyWithoutUserNestedInput
+    trxToUser?: TransactionUpdateManyWithoutToUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutSessionsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    uname?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    trxUser?: TransactionUncheckedUpdateManyWithoutUserNestedInput
+    trxToUser?: TransactionUncheckedUpdateManyWithoutToUserNestedInput
+  }
+
+  export type SessionCreateManyUserInput = {
+    id?: number
+    createdAt?: Date | string
   }
 
   export type TransactionCreateManyUserInput = {
     id?: number
     amount: number
     type: string
+    toUserId?: number | null
     createdAt?: Date | string
   }
 
-  export type isLoginCreateManyUserInput = {
+  export type TransactionCreateManyToUserInput = {
     id?: number
+    amount: number
+    type: string
+    userId: number
+    createdAt?: Date | string
+  }
+
+  export type SessionUpdateWithoutUserInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SessionUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SessionUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TransactionUpdateWithoutUserInput = {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    toUser?: UserUpdateOneWithoutTrxToUserNestedInput
   }
 
   export type TransactionUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
+    toUserId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4937,19 +5371,31 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
+    toUserId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type isLoginUpdateWithoutUserInput = {
-
+  export type TransactionUpdateWithoutToUserInput = {
+    amount?: FloatFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutTrxUserNestedInput
   }
 
-  export type isLoginUncheckedUpdateWithoutUserInput = {
+  export type TransactionUncheckedUpdateWithoutToUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type isLoginUncheckedUpdateManyWithoutUserInput = {
+  export type TransactionUncheckedUpdateManyWithoutToUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    amount?: FloatFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
@@ -4970,9 +5416,9 @@ export namespace Prisma {
      */
     export type TransactionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TransactionDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use isLoginDefaultArgs instead
+     * @deprecated Use SessionDefaultArgs instead
      */
-    export type isLoginArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = isLoginDefaultArgs<ExtArgs>
+    export type SessionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SessionDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

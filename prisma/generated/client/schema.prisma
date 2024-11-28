@@ -9,10 +9,12 @@ generator client {
 }
 
 model User {
-  id      Int           @id @default(autoincrement())
-  uname   String        @unique
-  trx     Transaction[]
-  isLogin isLogin[]
+  id        Int           @id @default(autoincrement())
+  uname     String        @unique
+  sessions  Session[]
+  trxUser   Transaction[] @relation("trxUser")
+  trxToUser Transaction[] @relation("trxToUser")
+  createdAt DateTime      @default(now())
 }
 
 model Transaction {
@@ -20,12 +22,15 @@ model Transaction {
   amount    Float
   type      String
   userId    Int
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation("trxUser", fields: [userId], references: [id])
+  toUserId  Int?
+  toUser    User?    @relation("trxToUser", fields: [toUserId], references: [id])
   createdAt DateTime @default(now())
 }
 
-model isLogin {
-  id     Int  @id @default(autoincrement())
-  userId Int
-  user   User @relation(fields: [userId], references: [id])
+model Session {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
 }

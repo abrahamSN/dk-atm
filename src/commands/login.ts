@@ -1,31 +1,32 @@
 import { Args, Command, Flags } from "@oclif/core";
+import chalk from "chalk";
+import figlet from "figlet";
+
+import * as AuthController from "../controllers/auth.controller.js";
 
 export default class Login extends Command {
   static override args = {
-    file: Args.string({ description: "file to read" }),
-    account: Args.string({ description: "account to login" }),
+    uname: Args.string({ description: "account to login" }),
   };
 
   static override description = "login to your account";
 
-  static override examples = ["<%= config.bin %> <%= command.id %>"];
-
-  static override flags = {
-    // flag with no value (-f, --force)
-    force: Flags.boolean({ char: "f" }),
-    // flag with a value (-n, --name=VALUE)
-    name: Flags.string({ char: "n", description: "name to print" }),
-  };
+  static override examples = [
+    "<%= config.bin %> <%= command.id %> <%= args.uname %>",
+  ];
 
   public async run(): Promise<void> {
-    const { args, flags } = await this.parse(Login);
+    const { args } = await this.parse(Login);
 
-    const name = flags.name ?? "world";
-    this.log(
-      `hello ${name} from D:\\Projects\\github.com\\abrahamSN\\dk-atm\\src\\commands\\login.ts`
-    );
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`);
+    const uname = args.uname;
+
+    if (!uname || uname === "" || uname === " " || uname === undefined) {
+      this.log(chalk.red("Please provide a uname"));
+      return;
     }
+
+    const res = await AuthController.login(uname);
+
+    this.log(`hello ${uname}`);
   }
 }
