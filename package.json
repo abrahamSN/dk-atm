@@ -1,0 +1,28 @@
+{
+  "name": "dk-atm",
+  "version": "1.0.0",
+  "description": "DK simple ATM",
+  "main": "./bin/run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "abrahamSN",
+  "license": "ISC",
+  "bin": {
+    "dk-atm": "./bin/run.js"
+  },
+  "type": "module",
+  "oclif": {
+    "bin": "dk-atm",
+    "commands": "./dist/commands",
+    "dirname": "dk-atm",
+    "topicSeparator": " "
+  },
+  "dependencies": {
+    "@oclif/core": "^4.0.33"
+  },
+  "devDependencies": {
+    "@types/node": "18",
+    "ts-node": "^10.9.2"
+  }
+}
