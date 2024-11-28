@@ -1,8 +1,8 @@
 import { Args, Command, Flags } from "@oclif/core";
 import chalk from "chalk";
-import figlet from "figlet";
 
-import * as AuthController from "../controllers/auth.controller.js";
+import * as SessionService from "../services/session.service.js";
+import * as UserService from "../services/user.service.js";
 
 export default class Login extends Command {
   static override args = {
@@ -25,8 +25,30 @@ export default class Login extends Command {
       return;
     }
 
-    const res = await AuthController.login(uname);
+    try {
+      const getSession = await SessionService.getSession();
 
-    this.log(`hello ${uname}`);
+      if (getSession) {
+        this.log(chalk.yellow("You are already logged in"));
+        return;
+      }
+
+      let user = await UserService.getUserByUname(uname);
+
+      if (!user) {
+        user = await UserService.createUser({ uname });
+      }
+
+      const data = {
+        userId: Number(user.id),
+      };
+
+      await SessionService.createSession(data);
+
+      this.log(chalk.green(`Hello, ${uname}!`));
+      this.log(chalk.green(`Your balance is $2`));
+    } catch (error) {
+      this.log(chalk.red("An error occurred"));
+    }
   }
 }

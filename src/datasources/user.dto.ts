@@ -1,5 +1,7 @@
 import prisma from "../configs/prisma.js";
 
+import { UserCreate } from "../types/user.type.js";
+
 const getUserById = async (id: number) => {
   return await prisma.user.findUnique({
     where: {
@@ -16,7 +18,7 @@ const getUserByUname = async (uname: string) => {
   });
 };
 
-const createUser = async (data: any) => {
+const createUser = async (data: UserCreate) => {
   return await prisma.user.create({
     data,
   });

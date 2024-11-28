@@ -1,6 +1,8 @@
 import * as SessionDto from "../datasources/session.dto.js";
 
-const createSession = async (data) => {
+import { SessionCreate } from "../types/session.type.js";
+
+const createSession = async (data: SessionCreate) => {
   return await SessionDto.createSession(data);
 };
 
