@@ -54,15 +54,28 @@ export default class Login extends Command {
       this.log(chalk.green(`Hello, ${uname}!`));
       this.log(chalk.green(`Your balance is $${balance}`));
 
-      const owedTrx = await TransactionService.getOwedToByUserId(
+      const owedToTrx = await TransactionService.getOwedToByUserId(
         Number(user.id)
       );
 
-      if (owedTrx) {
+      if (owedToTrx) {
         const owedToUser = await UserService.getUserById(
-          Number(owedTrx.toUserId)
+          Number(owedToTrx.toUserId)
         );
-        this.log(chalk.red(`Owe $${owedTrx.owed} to ${owedToUser?.uname}`));
+        this.log(chalk.red(`Owe $${owedToTrx.owed} to ${owedToUser?.uname}`));
+      }
+
+      const owedFromTrx = await TransactionService.getOwedFromByUserId(
+        Number(user.id)
+      );
+
+      if (owedFromTrx) {
+        const owedFromUser = await UserService.getUserById(
+          Number(owedFromTrx.userId)
+        );
+        this.log(
+          chalk.red(`Owed $${owedFromTrx.owed} from ${owedFromUser?.uname}`)
+        );
       }
     } catch (error) {
       this.log(chalk.red("An error occurred"));

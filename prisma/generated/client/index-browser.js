@@ -132,6 +132,7 @@ exports.Prisma.TransactionScalarFieldEnum = {
   userId: 'userId',
   toUserId: 'toUserId',
   owed: 'owed',
+  isOwe: 'isOwe',
   createdAt: 'createdAt'
 };
 

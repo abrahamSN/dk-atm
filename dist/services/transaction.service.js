@@ -40,4 +40,7 @@ const getOwedToBalanceByUserId = async (id) => {
 const getOwedToByUserId = async (id) => {
     return await TransactionDto.getTransactionOwedToByUserId(id);
 };
-export { createTransaction, getTransactions, getBalanceByUserId, getOwedToBalanceByUserId, getOwedToByUserId, };
+const getOwedFromByUserId = async (id) => {
+    return await TransactionDto.getTransactionOwedFromByUserId(id);
+};
+export { createTransaction, getTransactions, getBalanceByUserId, getOwedToBalanceByUserId, getOwedToByUserId, getOwedFromByUserId, };

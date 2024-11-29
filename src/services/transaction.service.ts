@@ -66,10 +66,15 @@ const getOwedToByUserId = async (id: number) => {
   return await TransactionDto.getTransactionOwedToByUserId(id);
 };
 
+const getOwedFromByUserId = async (id: number) => {
+  return await TransactionDto.getTransactionOwedFromByUserId(id);
+};
+
 export {
   createTransaction,
   getTransactions,
   getBalanceByUserId,
   getOwedToBalanceByUserId,
   getOwedToByUserId,
+  getOwedFromByUserId,
 };

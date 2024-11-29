@@ -3,6 +3,7 @@ import chalk from "chalk";
 
 import * as SessionService from "../services/session.service.js";
 import * as TransactionService from "../services/transaction.service.js";
+import * as UserService from "../services/user.service.js";
 
 export default class Deposit extends Command {
   static override args = {
@@ -49,11 +50,45 @@ export default class Deposit extends Command {
 
       await TransactionService.createTransaction(dataTrx);
 
+      const owedTrx = await TransactionService.getOwedToByUserId(
+        Number(getSession.userId)
+      );
+
+      if (owedTrx) {
+        const dataPayOwed = {
+          userId: getSession.userId,
+          toUserId: Number(owedTrx.toUserId),
+          amount:
+            owedTrx.owed - Number(amount) < 0
+              ? Math.abs(owedTrx.owed - Number(amount))
+              : Number(amount),
+          type: "TRANSFER",
+          owed:
+            owedTrx.owed - Number(amount) < 0
+              ? 0
+              : owedTrx.owed - Number(amount),
+          isOwe: true,
+        };
+
+        await TransactionService.createTransaction(dataPayOwed);
+      }
+
       const balance = await TransactionService.getBalanceByUserId(
         getSession.userId
       );
 
       this.log(chalk.green(`Your balance is $${balance}`));
+
+      const newOwedTrx = await TransactionService.getOwedToByUserId(
+        Number(getSession.userId)
+      );
+
+      if (owedTrx) {
+        const owedToUser = await UserService.getUserById(
+          Number(owedTrx.toUserId)
+        );
+        this.log(chalk.red(`Owe $${owedTrx.owed} to ${owedToUser?.uname}`));
+      }
     } catch (error) {
       this.log(chalk.red("Failed to deposit money"));
     }

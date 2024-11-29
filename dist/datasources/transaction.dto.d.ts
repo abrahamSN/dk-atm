@@ -6,6 +6,7 @@ declare const getTransactions: () => Promise<{
     userId: number;
     toUserId: number | null;
     owed: number;
+    isOwe: boolean;
     createdAt: Date;
 }[]>;
 declare const getTransactionById: (id: number) => Promise<{
@@ -15,6 +16,7 @@ declare const getTransactionById: (id: number) => Promise<{
     userId: number;
     toUserId: number | null;
     owed: number;
+    isOwe: boolean;
     createdAt: Date;
 } | null>;
 declare const getTransactionByData: (data: Object) => Promise<{
@@ -24,6 +26,7 @@ declare const getTransactionByData: (data: Object) => Promise<{
     userId: number;
     toUserId: number | null;
     owed: number;
+    isOwe: boolean;
     createdAt: Date;
 }[]>;
 declare const getTransactionOwedToByUserId: (userId: number) => Promise<{
@@ -33,6 +36,7 @@ declare const getTransactionOwedToByUserId: (userId: number) => Promise<{
     userId: number;
     toUserId: number | null;
     owed: number;
+    isOwe: boolean;
     createdAt: Date;
 } | null>;
 declare const getTransactionOwedFromByUserId: (userId: number) => Promise<{
@@ -42,6 +46,7 @@ declare const getTransactionOwedFromByUserId: (userId: number) => Promise<{
     userId: number;
     toUserId: number | null;
     owed: number;
+    isOwe: boolean;
     createdAt: Date;
 } | null>;
 declare const getTransactionByUserId: (userId: number) => Promise<{
@@ -51,6 +56,7 @@ declare const getTransactionByUserId: (userId: number) => Promise<{
     userId: number;
     toUserId: number | null;
     owed: number;
+    isOwe: boolean;
     createdAt: Date;
 }[]>;
 declare const createTransaction: (data: TransactionCreate) => Promise<{
@@ -60,6 +66,7 @@ declare const createTransaction: (data: TransactionCreate) => Promise<{
     userId: number;
     toUserId: number | null;
     owed: number;
+    isOwe: boolean;
     createdAt: Date;
 }>;
 export { getTransactions, getTransactionById, getTransactionByData, getTransactionOwedToByUserId, getTransactionOwedFromByUserId, getTransactionByUserId, createTransaction, };

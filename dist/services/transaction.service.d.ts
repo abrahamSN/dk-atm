@@ -6,6 +6,7 @@ declare const createTransaction: (data: TransactionCreate) => Promise<{
     userId: number;
     toUserId: number | null;
     owed: number;
+    isOwe: boolean;
     createdAt: Date;
 }>;
 declare const getTransactions: () => Promise<{
@@ -15,6 +16,7 @@ declare const getTransactions: () => Promise<{
     userId: number;
     toUserId: number | null;
     owed: number;
+    isOwe: boolean;
     createdAt: Date;
 }[]>;
 declare const getBalanceByUserId: (id: number) => Promise<number>;
@@ -26,6 +28,17 @@ declare const getOwedToByUserId: (id: number) => Promise<{
     userId: number;
     toUserId: number | null;
     owed: number;
+    isOwe: boolean;
     createdAt: Date;
 } | null>;
-export { createTransaction, getTransactions, getBalanceByUserId, getOwedToBalanceByUserId, getOwedToByUserId, };
+declare const getOwedFromByUserId: (id: number) => Promise<{
+    id: number;
+    amount: number;
+    type: string;
+    userId: number;
+    toUserId: number | null;
+    owed: number;
+    isOwe: boolean;
+    createdAt: Date;
+} | null>;
+export { createTransaction, getTransactions, getBalanceByUserId, getOwedToBalanceByUserId, getOwedToByUserId, getOwedFromByUserId, };

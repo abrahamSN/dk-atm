@@ -26,6 +26,7 @@ model Transaction {
     toUserId  Int?
     toUser    User?    @relation("trxToUser", fields: [toUserId], references: [id])
     owed      Float    @default(0)
+    isOwe     Boolean  @default(false)
     createdAt DateTime @default(now())
 }
 
