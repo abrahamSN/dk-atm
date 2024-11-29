@@ -20,10 +20,16 @@
     "bin": "dk-atm",
     "commands": "./dist/commands",
     "dirname": "dk-atm",
-    "topicSeparator": " "
+    "topicSeparator": " ",
+    "plugins": [
+      "@oclif/plugin-not-found",
+      "@oclif/plugin-commands"
+    ]
   },
   "dependencies": {
     "@oclif/core": "^4.0.33",
+    "@oclif/plugin-commands": "^4.1.11",
+    "@oclif/plugin-not-found": "^3.2.29",
     "@prisma/client": "^5.22.0",
     "chalk": "^5.3.0",
     "prisma": "^5.22.0"
