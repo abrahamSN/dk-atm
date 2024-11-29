@@ -54,7 +54,7 @@ export default class Transfer extends Command {
                 toUserId: toUserData.id,
                 amount: Number(amountToTransfer),
                 type: "TRANSFER",
-                owed: balance - Number(amount) < 0 ? balance - Number(amount) : 0,
+                owed: balance - Number(amount) < 0 ? Math.abs(balance - Number(amount)) : 0,
             };
             const transfered = await TransactionService.createTransaction(dataTrx);
             this.log(chalk.green(`Transfered $${amount} to ${toUser}`));
@@ -62,6 +62,11 @@ export default class Transfer extends Command {
             this.log(chalk.green(`Your balance is $${newBalance}`));
             if (transfered.owed) {
                 this.log(chalk.yellow(`You owe $${transfered.owed} to ${toUser}`));
+            }
+            const owedFromTrx = await TransactionService.getOwedFromByUserId(Number(getSession.userId));
+            if (owedFromTrx) {
+                const owedFromUser = await UserService.getUserById(Number(owedFromTrx.userId));
+                this.log(chalk.red(`Owed $${owedFromTrx.owed} from ${owedFromUser?.uname}`));
             }
         }
         catch (error) {

@@ -47,7 +47,7 @@ export default class Deposit extends Command {
                     type: "TRANSFER",
                     owed: owedTrx.owed - Number(amount) < 0
                         ? 0
-                        : owedTrx.owed - Number(amount),
+                        : Math.abs(owedTrx.owed - Number(amount)),
                     isOwe: true,
                 };
                 await TransactionService.createTransaction(dataPayOwed);
@@ -55,9 +55,9 @@ export default class Deposit extends Command {
             const balance = await TransactionService.getBalanceByUserId(getSession.userId);
             this.log(chalk.green(`Your balance is $${balance}`));
             const newOwedTrx = await TransactionService.getOwedToByUserId(Number(getSession.userId));
-            if (owedTrx) {
-                const owedToUser = await UserService.getUserById(Number(owedTrx.toUserId));
-                this.log(chalk.red(`Owe $${owedTrx.owed} to ${owedToUser?.uname}`));
+            if (newOwedTrx) {
+                const owedToUser = await UserService.getUserById(Number(newOwedTrx.toUserId));
+                this.log(chalk.red(`Owe $${newOwedTrx.owed} to ${owedToUser?.uname}`));
             }
         }
         catch (error) {
