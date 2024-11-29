@@ -44,20 +44,25 @@ export default class Transfer extends Command {
                 return;
             }
             const balance = await TransactionService.getBalanceByUserId(getSession.userId);
-            if (balance < Number(amount)) {
+            if (balance === 0) {
                 this.log(chalk.red("Insufficient balance"));
                 return;
             }
+            const amountToTransfer = balance - Number(amount) >= 0 ? amount : balance;
             const dataTrx = {
                 userId: getSession.userId,
                 toUserId: toUserData.id,
-                amount: Number(amount),
+                amount: Number(amountToTransfer),
                 type: "TRANSFER",
+                owed: balance - Number(amount) < 0 ? balance - Number(amount) : 0,
             };
-            await TransactionService.createTransaction(dataTrx);
+            const transfered = await TransactionService.createTransaction(dataTrx);
             this.log(chalk.green(`Transfered $${amount} to ${toUser}`));
             const newBalance = await TransactionService.getBalanceByUserId(getSession.userId);
             this.log(chalk.green(`Your balance is $${newBalance}`));
+            if (transfered.owed) {
+                this.log(chalk.yellow(`You owe $${transfered.owed} to ${toUser}`));
+            }
         }
         catch (error) {
             this.log(chalk.red("Failed to transfer money"));

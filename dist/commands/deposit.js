@@ -35,8 +35,26 @@ export default class Deposit extends Command {
                 type: "DEPOSIT",
             };
             await TransactionService.createTransaction(dataTrx);
+            const owedTrx = await TransactionService.getOwedToByUserId(Number(getSession.userId));
+            if (owedTrx) {
+                const dataPayOwed = {
+                    userId: getSession.userId,
+                    toUserId: owedTrx.toUserId,
+                    amount: owedTrx.owed - Number(amount) > 0 ? Math.abs(owedTrx.owed - Number(amount)) : owedTrx.owed,
+                    type: "TRANSFER",
+                };
+            }
             const balance = await TransactionService.getBalanceByUserId(getSession.userId);
             this.log(chalk.green(`Your balance is $${balance}`));
+            // const owedTrx = await TransactionService.getOwedToByUserId(
+            //   Number(getSession.userId)
+            // );
+            // if (owedTrx) {
+            //   const owedToUser = await UserService.getUserById(
+            //     Number(owedTrx.toUserId)
+            //   );
+            //   this.log(chalk.red(`Owe $${owedTrx.owed} to ${owedToUser?.uname}`));
+            // }
         }
         catch (error) {
             this.log(chalk.red("Failed to deposit money"));

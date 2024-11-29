@@ -18,6 +18,20 @@ const getTransactionByData = async (data: Object) => {
   });
 };
 
+const getTransactionOwedToByUserId = async (userId: number) => {
+  return await prisma.transaction.findFirst({
+    where: { userId: userId, type: "TRANSFER", owed: { not: 0 } },
+    orderBy: { createdAt: "desc" },
+  });
+};
+
+const getTransactionOwedFromByUserId = async (userId: number) => {
+  return await prisma.transaction.findFirst({
+    where: { toUserId: userId, type: "TRANSFER", owed: { not: 0 } },
+    orderBy: { createdAt: "desc" },
+  });
+};
+
 const getTransactionByUserId = async (userId: number) => {
   return await prisma.transaction.findMany({
     where: { userId },
@@ -34,6 +48,8 @@ export {
   getTransactions,
   getTransactionById,
   getTransactionByData,
+  getTransactionOwedToByUserId,
+  getTransactionOwedFromByUserId,
   getTransactionByUserId,
   createTransaction,
 };

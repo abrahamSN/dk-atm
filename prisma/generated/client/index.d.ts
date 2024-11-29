@@ -2084,6 +2084,7 @@ export namespace Prisma {
     amount: number | null
     userId: number | null
     toUserId: number | null
+    owed: number | null
   }
 
   export type TransactionSumAggregateOutputType = {
@@ -2091,6 +2092,7 @@ export namespace Prisma {
     amount: number | null
     userId: number | null
     toUserId: number | null
+    owed: number | null
   }
 
   export type TransactionMinAggregateOutputType = {
@@ -2099,6 +2101,7 @@ export namespace Prisma {
     type: string | null
     userId: number | null
     toUserId: number | null
+    owed: number | null
     createdAt: Date | null
   }
 
@@ -2108,6 +2111,7 @@ export namespace Prisma {
     type: string | null
     userId: number | null
     toUserId: number | null
+    owed: number | null
     createdAt: Date | null
   }
 
@@ -2117,6 +2121,7 @@ export namespace Prisma {
     type: number
     userId: number
     toUserId: number
+    owed: number
     createdAt: number
     _all: number
   }
@@ -2127,6 +2132,7 @@ export namespace Prisma {
     amount?: true
     userId?: true
     toUserId?: true
+    owed?: true
   }
 
   export type TransactionSumAggregateInputType = {
@@ -2134,6 +2140,7 @@ export namespace Prisma {
     amount?: true
     userId?: true
     toUserId?: true
+    owed?: true
   }
 
   export type TransactionMinAggregateInputType = {
@@ -2142,6 +2149,7 @@ export namespace Prisma {
     type?: true
     userId?: true
     toUserId?: true
+    owed?: true
     createdAt?: true
   }
 
@@ -2151,6 +2159,7 @@ export namespace Prisma {
     type?: true
     userId?: true
     toUserId?: true
+    owed?: true
     createdAt?: true
   }
 
@@ -2160,6 +2169,7 @@ export namespace Prisma {
     type?: true
     userId?: true
     toUserId?: true
+    owed?: true
     createdAt?: true
     _all?: true
   }
@@ -2256,6 +2266,7 @@ export namespace Prisma {
     type: string
     userId: number
     toUserId: number | null
+    owed: number
     createdAt: Date
     _count: TransactionCountAggregateOutputType | null
     _avg: TransactionAvgAggregateOutputType | null
@@ -2284,6 +2295,7 @@ export namespace Prisma {
     type?: boolean
     userId?: boolean
     toUserId?: boolean
+    owed?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     toUser?: boolean | Transaction$toUserArgs<ExtArgs>
@@ -2295,6 +2307,7 @@ export namespace Prisma {
     type?: boolean
     userId?: boolean
     toUserId?: boolean
+    owed?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     toUser?: boolean | Transaction$toUserArgs<ExtArgs>
@@ -2306,6 +2319,7 @@ export namespace Prisma {
     type?: boolean
     userId?: boolean
     toUserId?: boolean
+    owed?: boolean
     createdAt?: boolean
   }
 
@@ -2330,6 +2344,7 @@ export namespace Prisma {
       type: string
       userId: number
       toUserId: number | null
+      owed: number
       createdAt: Date
     }, ExtArgs["result"]["transaction"]>
     composites: {}
@@ -2731,6 +2746,7 @@ export namespace Prisma {
     readonly type: FieldRef<"Transaction", 'String'>
     readonly userId: FieldRef<"Transaction", 'Int'>
     readonly toUserId: FieldRef<"Transaction", 'Int'>
+    readonly owed: FieldRef<"Transaction", 'Float'>
     readonly createdAt: FieldRef<"Transaction", 'DateTime'>
   }
     
@@ -4048,6 +4064,7 @@ export namespace Prisma {
     type: 'type',
     userId: 'userId',
     toUserId: 'toUserId',
+    owed: 'owed',
     createdAt: 'createdAt'
   };
 
@@ -4177,6 +4194,7 @@ export namespace Prisma {
     type?: StringFilter<"Transaction"> | string
     userId?: IntFilter<"Transaction"> | number
     toUserId?: IntNullableFilter<"Transaction"> | number | null
+    owed?: FloatFilter<"Transaction"> | number
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     toUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
@@ -4188,6 +4206,7 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrderInput | SortOrder
+    owed?: SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     toUser?: UserOrderByWithRelationInput
@@ -4202,6 +4221,7 @@ export namespace Prisma {
     type?: StringFilter<"Transaction"> | string
     userId?: IntFilter<"Transaction"> | number
     toUserId?: IntNullableFilter<"Transaction"> | number | null
+    owed?: FloatFilter<"Transaction"> | number
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     toUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
@@ -4213,6 +4233,7 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrderInput | SortOrder
+    owed?: SortOrder
     createdAt?: SortOrder
     _count?: TransactionCountOrderByAggregateInput
     _avg?: TransactionAvgOrderByAggregateInput
@@ -4230,6 +4251,7 @@ export namespace Prisma {
     type?: StringWithAggregatesFilter<"Transaction"> | string
     userId?: IntWithAggregatesFilter<"Transaction"> | number
     toUserId?: IntNullableWithAggregatesFilter<"Transaction"> | number | null
+    owed?: FloatWithAggregatesFilter<"Transaction"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
   }
 
@@ -4334,6 +4356,7 @@ export namespace Prisma {
   export type TransactionCreateInput = {
     amount: number
     type: string
+    owed?: number
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutTrxUserInput
     toUser?: UserCreateNestedOneWithoutTrxToUserInput
@@ -4345,12 +4368,14 @@ export namespace Prisma {
     type: string
     userId: number
     toUserId?: number | null
+    owed?: number
     createdAt?: Date | string
   }
 
   export type TransactionUpdateInput = {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
+    owed?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTrxUserNestedInput
     toUser?: UserUpdateOneWithoutTrxToUserNestedInput
@@ -4362,6 +4387,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     toUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    owed?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4371,12 +4397,14 @@ export namespace Prisma {
     type: string
     userId: number
     toUserId?: number | null
+    owed?: number
     createdAt?: Date | string
   }
 
   export type TransactionUpdateManyMutationInput = {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
+    owed?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4386,6 +4414,7 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     toUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    owed?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4599,6 +4628,7 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrder
+    owed?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4607,6 +4637,7 @@ export namespace Prisma {
     amount?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrder
+    owed?: SortOrder
   }
 
   export type TransactionMaxOrderByAggregateInput = {
@@ -4615,6 +4646,7 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrder
+    owed?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4624,6 +4656,7 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrder
+    owed?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4632,6 +4665,7 @@ export namespace Prisma {
     amount?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrder
+    owed?: SortOrder
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -5065,6 +5099,7 @@ export namespace Prisma {
   export type TransactionCreateWithoutUserInput = {
     amount: number
     type: string
+    owed?: number
     createdAt?: Date | string
     toUser?: UserCreateNestedOneWithoutTrxToUserInput
   }
@@ -5074,6 +5109,7 @@ export namespace Prisma {
     amount: number
     type: string
     toUserId?: number | null
+    owed?: number
     createdAt?: Date | string
   }
 
@@ -5089,6 +5125,7 @@ export namespace Prisma {
   export type TransactionCreateWithoutToUserInput = {
     amount: number
     type: string
+    owed?: number
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutTrxUserInput
   }
@@ -5098,6 +5135,7 @@ export namespace Prisma {
     amount: number
     type: string
     userId: number
+    owed?: number
     createdAt?: Date | string
   }
 
@@ -5160,6 +5198,7 @@ export namespace Prisma {
     type?: StringFilter<"Transaction"> | string
     userId?: IntFilter<"Transaction"> | number
     toUserId?: IntNullableFilter<"Transaction"> | number | null
+    owed?: FloatFilter<"Transaction"> | number
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
   }
 
@@ -5327,6 +5366,7 @@ export namespace Prisma {
     amount: number
     type: string
     toUserId?: number | null
+    owed?: number
     createdAt?: Date | string
   }
 
@@ -5335,6 +5375,7 @@ export namespace Prisma {
     amount: number
     type: string
     userId: number
+    owed?: number
     createdAt?: Date | string
   }
 
@@ -5355,6 +5396,7 @@ export namespace Prisma {
   export type TransactionUpdateWithoutUserInput = {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
+    owed?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     toUser?: UserUpdateOneWithoutTrxToUserNestedInput
   }
@@ -5364,6 +5406,7 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     toUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    owed?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5372,12 +5415,14 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     toUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    owed?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TransactionUpdateWithoutToUserInput = {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
+    owed?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTrxUserNestedInput
   }
@@ -5387,6 +5432,7 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
+    owed?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5395,6 +5441,7 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
+    owed?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
