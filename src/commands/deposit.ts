@@ -11,7 +11,7 @@ export default class Deposit extends Command {
 
   static override description = "Deposit money to your account";
 
-  static override examples = ["<%= config.bin %> <%= command.id %> 100"];
+  static override examples = ["<%= config.bin %> <%= command.id %> <amount>"];
 
   public async run(): Promise<void> {
     const { args } = await this.parse(Deposit);

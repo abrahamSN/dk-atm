@@ -7,7 +7,7 @@ export default class Deposit extends Command {
         amount: Args.string({ description: "amount to deposit" }),
     };
     static description = "Deposit money to your account";
-    static examples = ["<%= config.bin %> <%= command.id %> 100"];
+    static examples = ["<%= config.bin %> <%= command.id %> <amount>"];
     async run() {
         const { args } = await this.parse(Deposit);
         try {
