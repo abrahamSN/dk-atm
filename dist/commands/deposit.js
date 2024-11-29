@@ -25,6 +25,10 @@ export default class Deposit extends Command {
                 this.log(chalk.red("Invalid amount"));
                 return;
             }
+            if (Number(amount) <= 0) {
+                this.log(chalk.red("Amount must be greater than 0"));
+                return;
+            }
             const dataTrx = {
                 userId: getSession.userId,
                 amount: Number(amount),
