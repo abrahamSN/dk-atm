@@ -60,13 +60,13 @@ export default class Deposit extends Command {
           toUserId: Number(owedTrx.toUserId),
           amount:
             owedTrx.owed - Number(amount) < 0
-              ? Math.abs(owedTrx.owed - Number(amount))
+              ? Math.abs(owedTrx.owed - Number(amount) + Number(amount))
               : Number(amount),
           type: "TRANSFER",
           owed:
             owedTrx.owed - Number(amount) < 0
               ? 0
-              : owedTrx.owed - Number(amount),
+              : Math.abs(owedTrx.owed - Number(amount)),
           isOwe: true,
         };
 
@@ -83,11 +83,11 @@ export default class Deposit extends Command {
         Number(getSession.userId)
       );
 
-      if (owedTrx) {
+      if (newOwedTrx) {
         const owedToUser = await UserService.getUserById(
-          Number(owedTrx.toUserId)
+          Number(newOwedTrx.toUserId)
         );
-        this.log(chalk.red(`Owe $${owedTrx.owed} to ${owedToUser?.uname}`));
+        this.log(chalk.red(`Owe $${newOwedTrx.owed} to ${owedToUser?.uname}`));
       }
     } catch (error) {
       this.log(chalk.red("Failed to deposit money"));

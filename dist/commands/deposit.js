@@ -42,7 +42,7 @@ export default class Deposit extends Command {
                     userId: getSession.userId,
                     toUserId: Number(owedTrx.toUserId),
                     amount: owedTrx.owed - Number(amount) < 0
-                        ? Math.abs(owedTrx.owed - Number(amount))
+                        ? Math.abs(owedTrx.owed - Number(amount) + Number(amount))
                         : Number(amount),
                     type: "TRANSFER",
                     owed: owedTrx.owed - Number(amount) < 0

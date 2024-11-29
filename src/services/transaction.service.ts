@@ -52,6 +52,7 @@ const getOwedToBalanceByUserId = async (id: number) => {
   const sendedOwedBalance = await TransactionDto.getTransactionByData({
     userId: id,
     type: "TRANSFER",
+    isOwe: true,
   });
 
   const totalSendedBalance = sendedOwedBalance.reduce(
