@@ -5,6 +5,8 @@ declare const getTransactions: () => Promise<{
     type: string;
     userId: number;
     toUserId: number | null;
+    owed: number;
+    isOwe: boolean;
     createdAt: Date;
 }[]>;
 declare const getTransactionById: (id: number) => Promise<{
@@ -13,6 +15,8 @@ declare const getTransactionById: (id: number) => Promise<{
     type: string;
     userId: number;
     toUserId: number | null;
+    owed: number;
+    isOwe: boolean;
     createdAt: Date;
 } | null>;
 declare const getTransactionByData: (data: Object) => Promise<{
@@ -21,14 +25,38 @@ declare const getTransactionByData: (data: Object) => Promise<{
     type: string;
     userId: number;
     toUserId: number | null;
+    owed: number;
+    isOwe: boolean;
     createdAt: Date;
 }[]>;
+declare const getTransactionOwedToByUserId: (userId: number) => Promise<{
+    id: number;
+    amount: number;
+    type: string;
+    userId: number;
+    toUserId: number | null;
+    owed: number;
+    isOwe: boolean;
+    createdAt: Date;
+} | null>;
+declare const getTransactionOwedFromByUserId: (userId: number) => Promise<{
+    id: number;
+    amount: number;
+    type: string;
+    userId: number;
+    toUserId: number | null;
+    owed: number;
+    isOwe: boolean;
+    createdAt: Date;
+} | null>;
 declare const getTransactionByUserId: (userId: number) => Promise<{
     id: number;
     amount: number;
     type: string;
     userId: number;
     toUserId: number | null;
+    owed: number;
+    isOwe: boolean;
     createdAt: Date;
 }[]>;
 declare const createTransaction: (data: TransactionCreate) => Promise<{
@@ -37,6 +65,8 @@ declare const createTransaction: (data: TransactionCreate) => Promise<{
     type: string;
     userId: number;
     toUserId: number | null;
+    owed: number;
+    isOwe: boolean;
     createdAt: Date;
 }>;
-export { getTransactions, getTransactionById, getTransactionByData, getTransactionByUserId, createTransaction, };
+export { getTransactions, getTransactionById, getTransactionByData, getTransactionOwedToByUserId, getTransactionOwedFromByUserId, getTransactionByUserId, createTransaction, };

@@ -2084,6 +2084,7 @@ export namespace Prisma {
     amount: number | null
     userId: number | null
     toUserId: number | null
+    owed: number | null
   }
 
   export type TransactionSumAggregateOutputType = {
@@ -2091,6 +2092,7 @@ export namespace Prisma {
     amount: number | null
     userId: number | null
     toUserId: number | null
+    owed: number | null
   }
 
   export type TransactionMinAggregateOutputType = {
@@ -2099,6 +2101,8 @@ export namespace Prisma {
     type: string | null
     userId: number | null
     toUserId: number | null
+    owed: number | null
+    isOwe: boolean | null
     createdAt: Date | null
   }
 
@@ -2108,6 +2112,8 @@ export namespace Prisma {
     type: string | null
     userId: number | null
     toUserId: number | null
+    owed: number | null
+    isOwe: boolean | null
     createdAt: Date | null
   }
 
@@ -2117,6 +2123,8 @@ export namespace Prisma {
     type: number
     userId: number
     toUserId: number
+    owed: number
+    isOwe: number
     createdAt: number
     _all: number
   }
@@ -2127,6 +2135,7 @@ export namespace Prisma {
     amount?: true
     userId?: true
     toUserId?: true
+    owed?: true
   }
 
   export type TransactionSumAggregateInputType = {
@@ -2134,6 +2143,7 @@ export namespace Prisma {
     amount?: true
     userId?: true
     toUserId?: true
+    owed?: true
   }
 
   export type TransactionMinAggregateInputType = {
@@ -2142,6 +2152,8 @@ export namespace Prisma {
     type?: true
     userId?: true
     toUserId?: true
+    owed?: true
+    isOwe?: true
     createdAt?: true
   }
 
@@ -2151,6 +2163,8 @@ export namespace Prisma {
     type?: true
     userId?: true
     toUserId?: true
+    owed?: true
+    isOwe?: true
     createdAt?: true
   }
 
@@ -2160,6 +2174,8 @@ export namespace Prisma {
     type?: true
     userId?: true
     toUserId?: true
+    owed?: true
+    isOwe?: true
     createdAt?: true
     _all?: true
   }
@@ -2256,6 +2272,8 @@ export namespace Prisma {
     type: string
     userId: number
     toUserId: number | null
+    owed: number
+    isOwe: boolean
     createdAt: Date
     _count: TransactionCountAggregateOutputType | null
     _avg: TransactionAvgAggregateOutputType | null
@@ -2284,6 +2302,8 @@ export namespace Prisma {
     type?: boolean
     userId?: boolean
     toUserId?: boolean
+    owed?: boolean
+    isOwe?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     toUser?: boolean | Transaction$toUserArgs<ExtArgs>
@@ -2295,6 +2315,8 @@ export namespace Prisma {
     type?: boolean
     userId?: boolean
     toUserId?: boolean
+    owed?: boolean
+    isOwe?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     toUser?: boolean | Transaction$toUserArgs<ExtArgs>
@@ -2306,6 +2328,8 @@ export namespace Prisma {
     type?: boolean
     userId?: boolean
     toUserId?: boolean
+    owed?: boolean
+    isOwe?: boolean
     createdAt?: boolean
   }
 
@@ -2330,6 +2354,8 @@ export namespace Prisma {
       type: string
       userId: number
       toUserId: number | null
+      owed: number
+      isOwe: boolean
       createdAt: Date
     }, ExtArgs["result"]["transaction"]>
     composites: {}
@@ -2731,6 +2757,8 @@ export namespace Prisma {
     readonly type: FieldRef<"Transaction", 'String'>
     readonly userId: FieldRef<"Transaction", 'Int'>
     readonly toUserId: FieldRef<"Transaction", 'Int'>
+    readonly owed: FieldRef<"Transaction", 'Float'>
+    readonly isOwe: FieldRef<"Transaction", 'Boolean'>
     readonly createdAt: FieldRef<"Transaction", 'DateTime'>
   }
     
@@ -4048,6 +4076,8 @@ export namespace Prisma {
     type: 'type',
     userId: 'userId',
     toUserId: 'toUserId',
+    owed: 'owed',
+    isOwe: 'isOwe',
     createdAt: 'createdAt'
   };
 
@@ -4109,6 +4139,13 @@ export namespace Prisma {
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
   /**
    * Deep Input Types
@@ -4177,6 +4214,8 @@ export namespace Prisma {
     type?: StringFilter<"Transaction"> | string
     userId?: IntFilter<"Transaction"> | number
     toUserId?: IntNullableFilter<"Transaction"> | number | null
+    owed?: FloatFilter<"Transaction"> | number
+    isOwe?: BoolFilter<"Transaction"> | boolean
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     toUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
@@ -4188,6 +4227,8 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrderInput | SortOrder
+    owed?: SortOrder
+    isOwe?: SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     toUser?: UserOrderByWithRelationInput
@@ -4202,6 +4243,8 @@ export namespace Prisma {
     type?: StringFilter<"Transaction"> | string
     userId?: IntFilter<"Transaction"> | number
     toUserId?: IntNullableFilter<"Transaction"> | number | null
+    owed?: FloatFilter<"Transaction"> | number
+    isOwe?: BoolFilter<"Transaction"> | boolean
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     toUser?: XOR<UserNullableRelationFilter, UserWhereInput> | null
@@ -4213,6 +4256,8 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrderInput | SortOrder
+    owed?: SortOrder
+    isOwe?: SortOrder
     createdAt?: SortOrder
     _count?: TransactionCountOrderByAggregateInput
     _avg?: TransactionAvgOrderByAggregateInput
@@ -4230,6 +4275,8 @@ export namespace Prisma {
     type?: StringWithAggregatesFilter<"Transaction"> | string
     userId?: IntWithAggregatesFilter<"Transaction"> | number
     toUserId?: IntNullableWithAggregatesFilter<"Transaction"> | number | null
+    owed?: FloatWithAggregatesFilter<"Transaction"> | number
+    isOwe?: BoolWithAggregatesFilter<"Transaction"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Transaction"> | Date | string
   }
 
@@ -4334,6 +4381,8 @@ export namespace Prisma {
   export type TransactionCreateInput = {
     amount: number
     type: string
+    owed?: number
+    isOwe?: boolean
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutTrxUserInput
     toUser?: UserCreateNestedOneWithoutTrxToUserInput
@@ -4345,12 +4394,16 @@ export namespace Prisma {
     type: string
     userId: number
     toUserId?: number | null
+    owed?: number
+    isOwe?: boolean
     createdAt?: Date | string
   }
 
   export type TransactionUpdateInput = {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
+    owed?: FloatFieldUpdateOperationsInput | number
+    isOwe?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTrxUserNestedInput
     toUser?: UserUpdateOneWithoutTrxToUserNestedInput
@@ -4362,6 +4415,8 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     toUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    owed?: FloatFieldUpdateOperationsInput | number
+    isOwe?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4371,12 +4426,16 @@ export namespace Prisma {
     type: string
     userId: number
     toUserId?: number | null
+    owed?: number
+    isOwe?: boolean
     createdAt?: Date | string
   }
 
   export type TransactionUpdateManyMutationInput = {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
+    owed?: FloatFieldUpdateOperationsInput | number
+    isOwe?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4386,6 +4445,8 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
     toUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    owed?: FloatFieldUpdateOperationsInput | number
+    isOwe?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4578,6 +4639,11 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type UserRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -4599,6 +4665,8 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrder
+    owed?: SortOrder
+    isOwe?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4607,6 +4675,7 @@ export namespace Prisma {
     amount?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrder
+    owed?: SortOrder
   }
 
   export type TransactionMaxOrderByAggregateInput = {
@@ -4615,6 +4684,8 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrder
+    owed?: SortOrder
+    isOwe?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4624,6 +4695,8 @@ export namespace Prisma {
     type?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrder
+    owed?: SortOrder
+    isOwe?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4632,6 +4705,7 @@ export namespace Prisma {
     amount?: SortOrder
     userId?: SortOrder
     toUserId?: SortOrder
+    owed?: SortOrder
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -4664,6 +4738,14 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type SessionCountOrderByAggregateInput = {
@@ -4856,6 +4938,10 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type UserUpdateOneRequiredWithoutTrxUserNestedInput = {
     create?: XOR<UserCreateWithoutTrxUserInput, UserUncheckedCreateWithoutTrxUserInput>
     connectOrCreate?: UserCreateOrConnectWithoutTrxUserInput
@@ -5001,6 +5087,11 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[]
@@ -5044,6 +5135,14 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type SessionCreateWithoutUserInput = {
     createdAt?: Date | string
   }
@@ -5065,6 +5164,8 @@ export namespace Prisma {
   export type TransactionCreateWithoutUserInput = {
     amount: number
     type: string
+    owed?: number
+    isOwe?: boolean
     createdAt?: Date | string
     toUser?: UserCreateNestedOneWithoutTrxToUserInput
   }
@@ -5074,6 +5175,8 @@ export namespace Prisma {
     amount: number
     type: string
     toUserId?: number | null
+    owed?: number
+    isOwe?: boolean
     createdAt?: Date | string
   }
 
@@ -5089,6 +5192,8 @@ export namespace Prisma {
   export type TransactionCreateWithoutToUserInput = {
     amount: number
     type: string
+    owed?: number
+    isOwe?: boolean
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutTrxUserInput
   }
@@ -5098,6 +5203,8 @@ export namespace Prisma {
     amount: number
     type: string
     userId: number
+    owed?: number
+    isOwe?: boolean
     createdAt?: Date | string
   }
 
@@ -5160,6 +5267,8 @@ export namespace Prisma {
     type?: StringFilter<"Transaction"> | string
     userId?: IntFilter<"Transaction"> | number
     toUserId?: IntNullableFilter<"Transaction"> | number | null
+    owed?: FloatFilter<"Transaction"> | number
+    isOwe?: BoolFilter<"Transaction"> | boolean
     createdAt?: DateTimeFilter<"Transaction"> | Date | string
   }
 
@@ -5327,6 +5436,8 @@ export namespace Prisma {
     amount: number
     type: string
     toUserId?: number | null
+    owed?: number
+    isOwe?: boolean
     createdAt?: Date | string
   }
 
@@ -5335,6 +5446,8 @@ export namespace Prisma {
     amount: number
     type: string
     userId: number
+    owed?: number
+    isOwe?: boolean
     createdAt?: Date | string
   }
 
@@ -5355,6 +5468,8 @@ export namespace Prisma {
   export type TransactionUpdateWithoutUserInput = {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
+    owed?: FloatFieldUpdateOperationsInput | number
+    isOwe?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     toUser?: UserUpdateOneWithoutTrxToUserNestedInput
   }
@@ -5364,6 +5479,8 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     toUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    owed?: FloatFieldUpdateOperationsInput | number
+    isOwe?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5372,12 +5489,16 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     toUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    owed?: FloatFieldUpdateOperationsInput | number
+    isOwe?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TransactionUpdateWithoutToUserInput = {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
+    owed?: FloatFieldUpdateOperationsInput | number
+    isOwe?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTrxUserNestedInput
   }
@@ -5387,6 +5508,8 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
+    owed?: FloatFieldUpdateOperationsInput | number
+    isOwe?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5395,6 +5518,8 @@ export namespace Prisma {
     amount?: FloatFieldUpdateOperationsInput | number
     type?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
+    owed?: FloatFieldUpdateOperationsInput | number
+    isOwe?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

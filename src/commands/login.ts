@@ -3,6 +3,8 @@ import chalk from "chalk";
 
 import * as SessionService from "../services/session.service.js";
 import * as UserService from "../services/user.service.js";
+import * as TransactionService from "../services/transaction.service.js";
+import { create } from "domain";
 
 export default class Login extends Command {
   static override args = {
@@ -45,8 +47,36 @@ export default class Login extends Command {
 
       await SessionService.createSession(data);
 
+      const balance = await TransactionService.getBalanceByUserId(
+        Number(user.id)
+      );
+
       this.log(chalk.green(`Hello, ${uname}!`));
-      this.log(chalk.green(`Your balance is $2`));
+      this.log(chalk.green(`Your balance is $${balance}`));
+
+      const owedToTrx = await TransactionService.getOwedToByUserId(
+        Number(user.id)
+      );
+
+      if (owedToTrx) {
+        const owedToUser = await UserService.getUserById(
+          Number(owedToTrx.toUserId)
+        );
+        this.log(chalk.red(`Owe $${owedToTrx.owed} to ${owedToUser?.uname}`));
+      }
+
+      const owedFromTrx = await TransactionService.getOwedFromByUserId(
+        Number(user.id)
+      );
+
+      if (owedFromTrx) {
+        const owedFromUser = await UserService.getUserById(
+          Number(owedFromTrx.userId)
+        );
+        this.log(
+          chalk.red(`Owed $${owedFromTrx.owed} from ${owedFromUser?.uname}`)
+        );
+      }
     } catch (error) {
       this.log(chalk.red("An error occurred"));
     }

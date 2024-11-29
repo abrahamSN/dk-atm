@@ -2,6 +2,7 @@ import { Args, Command } from "@oclif/core";
 import chalk from "chalk";
 import * as SessionService from "../services/session.service.js";
 import * as TransactionService from "../services/transaction.service.js";
+import * as UserService from "../services/user.service.js";
 export default class Deposit extends Command {
     static args = {
         amount: Args.string({ description: "amount to deposit" }),
@@ -35,8 +36,29 @@ export default class Deposit extends Command {
                 type: "DEPOSIT",
             };
             await TransactionService.createTransaction(dataTrx);
+            const owedTrx = await TransactionService.getOwedToByUserId(Number(getSession.userId));
+            if (owedTrx) {
+                const dataPayOwed = {
+                    userId: getSession.userId,
+                    toUserId: Number(owedTrx.toUserId),
+                    amount: owedTrx.owed - Number(amount) < 0
+                        ? Math.abs(owedTrx.owed - Number(amount) + Number(amount))
+                        : Number(amount),
+                    type: "TRANSFER",
+                    owed: owedTrx.owed - Number(amount) < 0
+                        ? 0
+                        : Math.abs(owedTrx.owed - Number(amount)),
+                    isOwe: true,
+                };
+                await TransactionService.createTransaction(dataPayOwed);
+            }
             const balance = await TransactionService.getBalanceByUserId(getSession.userId);
             this.log(chalk.green(`Your balance is $${balance}`));
+            const newOwedTrx = await TransactionService.getOwedToByUserId(Number(getSession.userId));
+            if (newOwedTrx) {
+                const owedToUser = await UserService.getUserById(Number(newOwedTrx.toUserId));
+                this.log(chalk.red(`Owe $${newOwedTrx.owed} to ${owedToUser?.uname}`));
+            }
         }
         catch (error) {
             this.log(chalk.red("Failed to deposit money"));

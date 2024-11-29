@@ -44,20 +44,56 @@ export default class Transfer extends Command {
                 return;
             }
             const balance = await TransactionService.getBalanceByUserId(getSession.userId);
-            if (balance < Number(amount)) {
+            if (balance === 0) {
                 this.log(chalk.red("Insufficient balance"));
                 return;
             }
-            const dataTrx = {
-                userId: getSession.userId,
-                toUserId: toUserData.id,
-                amount: Number(amount),
-                type: "TRANSFER",
-            };
-            await TransactionService.createTransaction(dataTrx);
-            this.log(chalk.green(`Transfered $${amount} to ${toUser}`));
+            const amountToTransfer = balance - Number(amount) >= 0 ? amount : balance;
+            const owedFromTrx = await TransactionService.getOwedFromByUserId(Number(getSession.userId));
+            if (owedFromTrx &&
+                owedFromTrx.owed > 0 &&
+                owedFromTrx.userId === toUserData.id &&
+                owedFromTrx.toUserId === getSession.userId) {
+                const owedFromUser = await UserService.getUserById(Number(owedFromTrx.userId));
+                const oweDataTrx = {
+                    userId: toUserData.id,
+                    toUserId: getSession.userId,
+                    amount: owedFromTrx.owed - Number(amount) < 0
+                        ? Math.abs(owedFromTrx.owed - Number(amount))
+                        : 0,
+                    type: "TRANSFER",
+                    owed: owedFromTrx.owed - Number(amount) < 0
+                        ? 0
+                        : Math.abs(owedFromTrx.owed - Number(amount)),
+                    isOwe: true,
+                };
+                await TransactionService.createTransaction(oweDataTrx);
+            }
+            else {
+                const dataTrx = {
+                    userId: getSession.userId,
+                    toUserId: toUserData.id,
+                    amount: Number(amountToTransfer),
+                    type: "TRANSFER",
+                    owed: balance - Number(amount) < 0
+                        ? Math.abs(balance - Number(amount))
+                        : 0,
+                    isOwe: balance - Number(amount) < 0 ? true : false,
+                };
+                await TransactionService.createTransaction(dataTrx);
+            }
+            this.log(chalk.green(`Transfered $${amountToTransfer} to ${toUser}`));
             const newBalance = await TransactionService.getBalanceByUserId(getSession.userId);
             this.log(chalk.green(`Your balance is $${newBalance}`));
+            const newOwedToTrx = await TransactionService.getOwedToByUserId(getSession.userId);
+            if (newOwedToTrx) {
+                this.log(chalk.yellow(`You owe $${newOwedToTrx.owed} to ${toUser}`));
+            }
+            const newOwedFromTrx = await TransactionService.getOwedFromByUserId(Number(getSession.userId));
+            if (newOwedFromTrx && newOwedFromTrx.owed > 0) {
+                const owedFromUser = await UserService.getUserById(Number(newOwedFromTrx.userId));
+                this.log(chalk.red(`Owed $${newOwedFromTrx.owed} from ${owedFromUser?.uname}`));
+            }
         }
         catch (error) {
             this.log(chalk.red("Failed to transfer money"));

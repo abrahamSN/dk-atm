@@ -48,4 +48,34 @@ const getBalanceByUserId = async (id: number) => {
   return totalBalance;
 };
 
-export { createTransaction, getTransactions, getBalanceByUserId };
+const getOwedToBalanceByUserId = async (id: number) => {
+  const sendedOwedBalance = await TransactionDto.getTransactionByData({
+    userId: id,
+    type: "TRANSFER",
+    isOwe: true,
+  });
+
+  const totalSendedBalance = sendedOwedBalance.reduce(
+    (acc, curr) => acc + curr.amount,
+    0
+  );
+
+  return totalSendedBalance;
+};
+
+const getOwedToByUserId = async (id: number) => {
+  return await TransactionDto.getTransactionOwedToByUserId(id);
+};
+
+const getOwedFromByUserId = async (id: number) => {
+  return await TransactionDto.getTransactionOwedFromByUserId(id);
+};
+
+export {
+  createTransaction,
+  getTransactions,
+  getBalanceByUserId,
+  getOwedToBalanceByUserId,
+  getOwedToByUserId,
+  getOwedFromByUserId,
+};
