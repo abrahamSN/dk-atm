@@ -2,6 +2,7 @@ import { Args, Command } from "@oclif/core";
 import chalk from "chalk";
 import * as SessionService from "../services/session.service.js";
 import * as UserService from "../services/user.service.js";
+import * as TransactionService from "../services/transaction.service.js";
 export default class Login extends Command {
     static args = {
         uname: Args.string({ description: "account to login" }),
@@ -31,8 +32,9 @@ export default class Login extends Command {
                 userId: Number(user.id),
             };
             await SessionService.createSession(data);
+            const balance = await TransactionService.getBalanceByUserId(Number(user.id));
             this.log(chalk.green(`Hello, ${uname}!`));
-            this.log(chalk.green(`Your balance is $2`));
+            this.log(chalk.green(`Your balance is $${balance}`));
         }
         catch (error) {
             this.log(chalk.red("An error occurred"));
